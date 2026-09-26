@@ -1,0 +1,113 @@
+{
+  "websiteSections": {
+    "About Me": {
+      "selected": true,
+      "features": [
+        "Professional biography",
+        "Teaching experience",
+        "Classes taught",
+        "Achievements and awards",
+        "Professional photograph",
+        "Gallery"
+      ]
+    },
+    "Courses / Classes": {
+      "selected": true,
+      "features": [
+        "Class-wise courses",
+        "Chapter-wise structure",
+        "JEE preparation",
+        "NEET preparation",
+        "Board exam preparation",
+        "Foundation courses"
+      ]
+    },
+    "Notes & Study Material": {
+      "selected": true,
+      "features": [
+        "Chapter-wise notes",
+        "Class-wise notes",
+        "Detailed theory notes",
+        "Handwritten notes",
+        "Formula sheets",
+        "Practice questions",
+        "Worksheets",
+        "Sample papers",
+        "Downloadable PDFs"
+      ]
+    },
+    "Video Lectures": {
+      "selected": true,
+      "features": [
+        "Topic-wise lectures",
+        "Problem-solving videos",
+        "Doubt-solving videos"
+      ]
+    },
+    "Announcements / Updates": {
+      "selected": true,
+      "features": [
+        "Important notices"
+      ]
+    },
+    "Student & Parent Resources": {
+      "selected": true,
+      "features": [
+        "Information for students",
+        "Information for parents"
+      ]
+    },
+    "Tests & Questions": {
+      "selected": true,
+      "features": [
+        "Downloadable tests"
+      ]
+    },
+    "Contact": {
+      "selected": true,
+      "features": [
+        "Phone number",
+        "Email",
+        "WhatsApp"
+      ]
+    },
+    "Gallery": {
+      "selected": true,
+      "features": [
+        "Classroom photographs",
+        "Events",
+        "Seminars",
+        "Awards",
+        "Student activities"
+      ]
+    },
+    "Testimonials": {
+      "selected": true,
+      "features": [
+        "Student testimonials",
+        "Written testimonials",
+        "Video testimonials"
+      ]
+    },
+    "Social Media": {
+      "selected": true,
+      "features": [
+        "YouTube",
+        "Instagram",
+        "LinkedIn",
+        "Telegram",
+        "WhatsApp"
+      ]
+    }
+  },
+  "design": {
+    "style": "Elegant",
+    "theme": "Dark",
+    "additionalNotes": ""
+  },
+  "management": {
+    "managedBy": "You manage everything",
+    "contentFrequency": "Weekly"
+  },
+  "otherRequirements": ""
+}
