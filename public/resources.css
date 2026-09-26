@@ -1,0 +1,743 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+	--black: #080a0c;
+	--background: #0c0f12;
+	--surface: #11151a;
+	--surface-light: #171c22;
+
+	--white: #f2eee5;
+	--white-soft: #d2cec5;
+	--muted: #858a91;
+
+	--gold: #c5a56a;
+	--gold-light: #d8bc82;
+	--gold-dark: #917342;
+
+	--border: #252b32;
+	--border-light: #303740;
+
+	--serif: 'Playfair Display', serif;
+	--sans: 'DM Sans', sans-serif;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--sans);
+	background: var(--background);
+	color: var(--white);
+
+	overflow-x: hidden;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+
+/* =========================================================
+   PAGE ATMOSPHERE
+========================================================= */
+
+body::before {
+	content: '';
+
+	position: fixed;
+	inset: 0;
+
+	background:
+		radial-gradient(
+			circle at 75% 15%,
+			rgba(197, 165, 106, 0.055),
+			transparent 28%
+		),
+		radial-gradient(
+			circle at 10% 80%,
+			rgba(197, 165, 106, 0.025),
+			transparent 30%
+		);
+
+	pointer-events: none;
+	z-index: -2;
+}
+
+
+/* =========================================================
+   SCIENTIFIC GRID
+========================================================= */
+
+body::after {
+	content: '';
+
+	position: fixed;
+	inset: 0;
+
+	background-image:
+		linear-gradient(
+			rgba(255, 255, 255, 0.018) 1px,
+			transparent 1px
+		),
+		linear-gradient(
+			90deg,
+			rgba(255, 255, 255, 0.018) 1px,
+			transparent 1px
+		);
+
+	background-size: 70px 70px;
+
+	pointer-events: none;
+	z-index: -1;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+#nav-bar {
+	width: 100%;
+
+	padding: 30px 6% 0;
+
+	position: relative;
+	z-index: 20;
+}
+
+#navbar {
+	display: flex;
+	align-items: center;
+
+	width: 100%;
+
+	padding: 23px 0 25px;
+
+	border-bottom: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   WEBSITE NAME
+========================================================= */
+
+#website-name {
+	margin-right: auto;
+
+	font-family: var(--serif);
+
+	font-size: 31px;
+
+	font-weight: 600;
+
+	letter-spacing: 0.5px;
+
+	color: var(--white);
+
+	transition: color 0.25s ease;
+}
+
+#website-name:hover {
+	color: var(--gold);
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+#navbar > a:not(#contact-nav) {
+	position: relative;
+}
+
+#navbar a {
+	font-size: 16px;
+
+	font-weight: 500;
+
+	color: var(--muted);
+
+	transition: color 0.25s ease;
+}
+
+#navbar a:hover {
+	color: var(--white);
+}
+
+
+/* NAV UNDERLINE */
+
+#navbar a:not(#contact-nav)::after {
+	content: '';
+
+	position: absolute;
+
+	left: 0;
+	bottom: -10px;
+
+	width: 0;
+	height: 1px;
+
+	background: var(--gold);
+
+	transition: width 0.25s ease;
+}
+
+#navbar a:not(#contact-nav):hover::after {
+	width: 100%;
+}
+
+
+/* =========================================================
+   NAVIGATION SPACING
+========================================================= */
+
+#return-home {
+	margin-left: 50px;
+}
+
+#about-navbar,
+#videos,
+#resources,
+#contact-navbar-link {
+	margin-left: 40px;
+}
+
+
+/* =========================================================
+   PROFILE IMAGE
+========================================================= */
+
+#contact-nav {
+	width: 53px;
+	height: 53px;
+
+	margin-left: 44px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: 50%;
+
+	border: 1px solid var(--border-light);
+
+	overflow: hidden;
+
+	transition:
+		border-color 0.3s ease,
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+#contact-nav img {
+	width: 100%;
+	height: 100%;
+
+	object-fit: cover;
+
+	transition: transform 0.4s ease;
+}
+
+#contact-nav:hover {
+	border-color: var(--gold);
+
+	transform: translateY(-3px);
+
+	box-shadow:
+		0 0 0 5px rgba(197, 165, 106, 0.05),
+		0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+#contact-nav:hover img {
+	transform: scale(1.07);
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+
+#hero {
+  position: relative;
+
+  min-height: 440px;
+  padding: 150px 8% 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+/* Small gold label */
+
+#hero-name {
+  margin: 0 0 25px;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+
+  color: var(--gold);
+}
+
+
+/* Main heading */
+
+#hero-tagline {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(48px, 6vw, 82px);
+  font-weight: 400;
+  line-height: 1.05;
+
+  color: var(--white);
+}
+
+
+/* Gold italic portion */
+
+#within-reach {
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+
+/* Description */
+
+#hero-desc {
+  max-width: 620px;
+
+  margin: 30px 0 0;
+
+  font-size: 17px;
+  line-height: 1.7;
+
+  color: var(--muted);
+}
+
+
+/* Highlighted words */
+
+.hero-desc-span {
+  color: var(--white-soft);
+}
+
+
+/* ========================================
+   DIVIDER
+   ======================================== */
+
+main > hr {
+  width: 84%;
+  height: 1px;
+
+  margin: 0 auto;
+
+  border: 0;
+  background: var(--border);
+}
+
+
+#resource-library {
+  width: 88%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+  padding: 100px 0 140px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: flex-end;
+
+  gap: 35px;
+
+  text-align: center;
+}
+
+
+#resorce-library-name {
+  width: 100%;
+
+  margin: 0 0 15px;
+
+  font-family: "Playfair Display", serif;
+  font-size: 42px;
+  font-weight: 400;
+
+  color: var(--white);
+
+  text-align: center;
+}
+
+
+.resource-filter {
+  width: 280px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+/* ========================================
+   RESOURCE LIST
+   ======================================== */
+
+#resource-list {
+  flex: 0 0 100%;
+
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 45px 0 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 30px;
+}
+
+
+/* ========================================
+   BIG RESOURCE CARD
+   ======================================== */
+
+.resource-item {
+  width: 100%;
+  min-height: 380px;
+
+  display: grid;
+
+  grid-template-columns: 100px minmax(0, 1fr) 200px;
+
+  align-items: stretch;
+
+  gap: 50px;
+
+  padding: 60px 70px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  position: relative;
+
+  text-align: left;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+
+.resource-item::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: var(--gold-dark);
+
+  opacity: 0.6;
+
+  transition:
+    background 0.3s ease,
+    opacity 0.3s ease;
+}
+
+
+.resource-item:hover {
+  transform: translateY(-5px);
+
+  background: var(--surface-light);
+
+  border-color: var(--gold-dark);
+}
+
+
+.resource-item:hover::before {
+  background: var(--gold);
+  opacity: 1;
+}
+
+
+/* NUMBER */
+
+.resource-number {
+  align-self: flex-start;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 42px;
+  font-weight: 400;
+
+  color: var(--gold-dark);
+
+  line-height: 1;
+}
+
+
+/* INFORMATION */
+
+.resource-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  text-align: left;
+}
+
+
+.resource-title {
+  margin: 0 0 18px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 400;
+
+  line-height: 1.1;
+
+  color: var(--white);
+}
+
+
+.resource-class {
+  display: inline-block;
+
+  margin: 0 12px 15px 0;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  color: var(--gold);
+}
+
+
+.resource-chapter {
+  display: inline-block;
+
+  margin: 0 0 20px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
+
+
+.resource-description {
+  max-width: 750px;
+
+  margin: 0;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  color: var(--muted);
+}
+
+
+/* RIGHT SIDE */
+
+.resource-meta {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  padding: 5px 0;
+
+  text-align: right;
+}
+
+
+.resource-type {
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
+
+
+.resource-download {
+  display: inline-block;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: var(--gold-light);
+
+  text-decoration: none;
+
+  padding-bottom: 7px;
+
+  border-bottom: 1px solid var(--gold-dark);
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.resource-download:hover {
+  color: var(--white);
+
+  border-color: var(--gold-light);
+}
+
+/* ========================================
+   CLASS & TYPE SELECTION
+   ======================================== */
+
+.resource-filter {
+  width: 280px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 14px;
+}
+
+#class-label,
+#type-label {
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
+
+
+/* Selection boxes */
+
+#resource-library select {
+  width: 280px;
+  height: 65px;
+
+  padding: 0 55px 0 22px;
+
+  appearance: none;
+
+  background-color: var(--surface);
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--gold) 50%),
+    linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+
+  background-position:
+    calc(100% - 25px) 50%,
+    calc(100% - 19px) 50%;
+
+  background-size: 7px 7px, 7px 7px;
+
+  background-repeat: no-repeat;
+
+  border: 1px solid var(--border);
+
+  color: var(--white);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  letter-spacing: 1px;
+
+  outline: none;
+  cursor: pointer;
+
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* Hover */
+
+#resource-library select:hover {
+  background-color: var(--surface-light);
+  border-color: var(--gold-dark);
+
+  transform: translateY(-2px);
+}
+
+
+/* Focus */
+
+#resource-library select:focus {
+  border-color: var(--gold);
+
+  box-shadow: 0 0 0 1px var(--gold-dark);
+}
+
+
+/* Dropdown options */
+
+#resource-library select option {
+  background: var(--surface);
+  color: var(--white-soft);
+
+  font-family: "DM Sans", sans-serif;
+}

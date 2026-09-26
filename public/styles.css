@@ -187,7 +187,6 @@ body::after {
 	color: var(--white);
 }
 
-
 /* NAV UNDERLINE */
 
 #navbar a:not(#contact-nav)::after {

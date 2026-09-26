@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources.css">
+		<link rel="icon" href="images/image (2).png">
+    <title>Chemistry — Resources</title>
+    <script src="resources.js" defer></script>
+  </head>
+  <body>
+		<section id="nav-bar">
+			<div id="navbar">
+				<div id="website-name" style="display : inline-block">
+					Some name
+				</div>
+				<a id="return-home" href="home.html">Home</a>
+				<a id="about-navbar" href="#about-teacher">About</a>				
+				<a id="videos" href="videos.html">Videos</a>
+				<a id="resources" href="resources.html">Resources</a>
+				<a id="contact-navbar-link" href="#contact">Contact</a>
+				<div id="contact-nav">
+					<a href="#about-teacher">
+						<img src="images/hero.png">
+					</a>
+				</div>
+			</div>
+		</section>
+    <main>
+      <section id="hero">
+        <p id="hero-name">RESOURCES</p>
+        <p id="hero-tagline">Chemistry, <span id="within-reach">within reach</span></p>
+        <p id="hero-desc"><span class="hero-desc-span">Notes</span>, <span class="hero-desc-span">study material</span>, and <span class="hero-desc-span">useful resources.</span></p>
+      </section>
+      <hr>
+      <section id="resource-library">
+        <p id="resorce-library-name">RESOURCE LIBRARY</p>
+          <div class="resource-filter">
+            <label id="class-label">CLASS</label>
+            <select>
+              <option value="all">ALL</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </div>
+
+          <div class="resource-filter">
+            <label id="type-label">TYPE</label>
+            <select>
+              <option value="all">ALL</option>
+              <option value="notes">NOTES</option>
+              <option value="worksheet">WORKSHEETS</option>
+              <option value="practice">PRACTICE</option>
+            </select>
+          </div>
+          <div id="resource-list"></div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -2,6 +2,7 @@ import http from 'http';
 import { URL } from 'url';
 import fs from 'fs';
 import path from 'path';
+import { getResources } from './database.js';
 
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, "http://localhost:3000");
@@ -10,10 +11,6 @@ const server = http.createServer((req, res) => {
     const home = fs.readFileSync("public/home.html", "utf8");
     res.writeHead(200, { "Content-Type": "text/html" });
     res.end(home);
-  } else if (req.method === "GET" && url.pathname === "/home.js") {
-    const script = fs.readFileSync("public/home.js", "utf8");
-    res.writeHead(200, { "Content-Type": "text/javascript" });
-    res.end(script);
   } else if (req.method === "GET" && url.pathname === "/styles.css") {
     const styles = fs.readFileSync("public/styles.css", "utf8");
     res.writeHead(200, { "Content-Type": "text/css" });
@@ -42,6 +39,28 @@ const server = http.createServer((req, res) => {
       "Content-Type" : "image/png"
     })
     res.end(file);
+  } else if (req.method === "GET" && url.pathname === "/resources.html") {
+    file = fs.readFileSync("public/resources.html")
+    res.writeHead(200, {
+      "Content-Type" : "text/html"
+    })
+    res.end(file);
+  } else if (req.method === "GET" && url.pathname === "/resources.js") {
+    file = fs.readFileSync("public/resources.js")
+    res.writeHead(200, {
+      "Content-Type" : "text/javascript"
+    })
+    res.end(file);
+  } else if (req.method === "GET" && url.pathname === "/getResources") {
+    res.writeHead(200, {
+      "Content-Type" : "application/json"
+    })
+    res.end(JSON.stringify(getResources()));
+  } else if (req.method === "GET" && url.pathname === "/resources.css") {
+    res.writeHead(200, {
+      "Content-Type" : "text/css"
+    })
+    res.end(fs.readFileSync("public/resources.css"))
   }
   else {
     // Fallback for 404 Not Found
