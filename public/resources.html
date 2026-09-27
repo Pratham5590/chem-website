@@ -35,9 +35,10 @@
       <hr>
       <section id="resource-library">
         <p id="resorce-library-name">RESOURCE LIBRARY</p>
+        <form id="form">
           <div class="resource-filter">
             <label id="class-label">CLASS</label>
-            <select>
+            <select id="class-filter">
               <option value="all">ALL</option>
               <option value="9">9</option>
               <option value="10">10</option>
@@ -45,18 +46,38 @@
               <option value="12">12</option>
             </select>
           </div>
-
           <div class="resource-filter">
             <label id="type-label">TYPE</label>
-            <select>
+            <select id="type-filter">
               <option value="all">ALL</option>
-              <option value="notes">NOTES</option>
-              <option value="worksheet">WORKSHEETS</option>
-              <option value="practice">PRACTICE</option>
+              <option value="Notes">NOTES</option>
+              <option value="Worksheet">WORKSHEETS</option>
+              <option value="Practice">PRACTICE</option>
             </select>
           </div>
-          <div id="resource-list"></div>
+          <button type="submit">SUBMIT</button>
+        </form>
+        <div id="resource-list"></div>
       </section>
     </main>
+		<footer id="footer">
+			<div id="footer-main">
+				<p id="footer-name">Mrs. Devyani Pawar</p>
+				<p id="footer-title">Chemistry Educator</p>
+			</div>
+
+			<div id="footer-links">
+				<a href="home.html">Home</a>
+				<a href="#about">About</a>
+				<a href="videos.html">Videos</a>
+				<a href="resources.html">Resources</a>
+				<a href="contact.html">Contact</a>
+			</div>
+
+			<div id="footer-bottom">
+				<p>© 2026 Mrs. Devyani Pawar. All rights reserved.</p>
+				<p>Made for understanding Chemistry.</p>
+			</div>
+		</footer>
   </body>
 </html>

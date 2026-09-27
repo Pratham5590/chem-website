@@ -15,20 +15,3 @@ export function getResources() {
   let resources = statement.all();
   return resources
 }
-
-export function getResourcesByFilter(classId, type) {
-  let query = 'SELECT * FROM resources WHERE 1=1';
-  const params = [];
-
-  if (classId !== "all") {
-    query += ' AND "class" = ?';
-    params.push(classId);
-  }
-
-  if (type !== "all") {
-    query += ' AND type = ?';
-    params.push(type);
-  }
-
-  return db.prepare(query).all(...params);
-}
