@@ -1,0 +1,1162 @@
+/* =========================================================
+   CHEMISTRY — VIDEOS
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+:root {
+  --black: #080a0c;
+  --background: #0c0f12;
+  --surface: #11151a;
+  --surface-light: #171c22;
+
+  --white: #f2eee5;
+  --white-soft: #d2cec5;
+  --muted: #858a91;
+
+  --gold: #c5a56a;
+  --gold-light: #d8bc82;
+  --gold-dark: #917342;
+
+  --border: #252b32;
+  --border-light: #303740;
+
+  --sans: "DM Sans", sans-serif;
+  --serif: "Playfair Display", serif;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--white);
+  font-family: var(--sans);
+  overflow-x: hidden;
+  position: relative;
+}
+
+
+/* subtle scientific grid */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+
+  background-image:
+    linear-gradient(var(--white) 1px, transparent 1px),
+    linear-gradient(90deg, var(--white) 1px, transparent 1px);
+
+  background-size: 70px 70px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 85%
+  );
+
+  z-index: -2;
+}
+
+
+/* subtle gold atmosphere */
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 700px;
+  height: 700px;
+
+  top: -350px;
+  right: -250px;
+
+  background: radial-gradient(
+    circle,
+    rgba(197, 165, 106, 0.08),
+    transparent 70%
+  );
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+#nav-bar {
+	width: 100%;
+
+	padding: 30px 6% 0;
+
+	position: relative;
+	z-index: 20;
+}
+
+#navbar {
+	display: flex;
+	align-items: center;
+
+	width: 100%;
+
+	padding: 23px 0 25px;
+
+	border-bottom: 1px solid var(--border);
+}
+
+#navbar a {
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   WEBSITE NAME
+========================================================= */
+
+#website-name {
+	margin-right: auto;
+
+	font-family: var(--serif);
+
+	font-size: 31px;
+
+	font-weight: 600;
+
+	letter-spacing: 0.5px;
+
+	color: var(--white);
+
+	transition: color 0.25s ease;
+}
+
+#website-name:hover {
+	color: var(--gold);
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+#navbar > a:not(#contact-nav) {
+	position: relative;
+}
+
+#navbar a {
+	font-size: 16px;
+
+	font-weight: 500;
+
+	color: var(--muted);
+
+	transition: color 0.25s ease;
+}
+
+#navbar a:hover {
+	color: var(--white);
+}
+
+
+/* NAV UNDERLINE */
+
+#navbar a:not(#contact-nav)::after {
+	content: '';
+
+	position: absolute;
+
+	left: 0;
+	bottom: -10px;
+
+	width: 0;
+	height: 1px;
+
+	background: var(--gold);
+
+	transition: width 0.25s ease;
+}
+
+#navbar a:not(#contact-nav):hover::after {
+	width: 100%;
+}
+
+
+/* =========================================================
+   NAVIGATION SPACING
+========================================================= */
+
+#return-home {
+	margin-left: 50px;
+}
+
+#about-navbar,
+#videos,
+#resources,
+#contact-navbar-link {
+	margin-left: 40px;
+}
+
+
+/* =========================================================
+   PROFILE IMAGE
+========================================================= */
+
+#contact-nav {
+	width: 53px;
+	height: 53px;
+
+	margin-left: 44px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: 50%;
+
+	border: 1px solid var(--border-light);
+
+	overflow: hidden;
+
+	transition:
+		border-color 0.3s ease,
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+#contact-nav img {
+	width: 100%;
+	height: 100%;
+
+	object-fit: cover;
+
+	transition: transform 0.4s ease;
+}
+
+#contact-nav:hover {
+	border-color: var(--gold);
+
+	transform: translateY(-3px);
+
+	box-shadow:
+		0 0 0 5px rgba(197, 165, 106, 0.05),
+		0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+#contact-nav:hover img {
+	transform: scale(1.07);
+}
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+main {
+  width: 100%;
+}
+
+#hero {
+  width: min(1050px, calc(100% - 80px));
+  margin: 0 auto;
+
+  padding: 110px 0 70px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+#hero-title {
+  margin-bottom: 18px;
+
+  color: var(--gold);
+
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+#hero-tagline {
+  color: var(--white);
+
+  font-family: var(--serif);
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 500;
+
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+
+#explained {
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+#hero-desc {
+  max-width: 560px;
+  margin: 25px auto 0;
+
+  color: var(--muted);
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.hero-desc-span {
+  color: var(--white-soft);
+}
+
+
+/* =========================================================
+   FEATURED LECTURE
+   ========================================================= */
+
+#featured-lecture {
+  width: min(1050px, calc(100% - 80px));
+
+  margin: 0 auto;
+
+  padding: 0 0 85px;
+}
+
+
+/* video frame */
+
+#featured-video {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  background: #050607;
+
+  border: 1px solid var(--border);
+
+  object-fit: contain;
+}
+
+#featured-info {
+  padding: 25px 5px 0;
+}
+
+#featured-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 12px;
+}
+
+#featured-class,
+#featured-duration {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+#featured-class {
+  color: var(--gold);
+}
+
+#featured-duration {
+  color: var(--muted);
+}
+
+#featured-duration::before {
+  content: "•";
+  margin-right: 14px;
+  color: var(--border-light);
+}
+
+#featured-title {
+  margin: 0 0 8px;
+
+  color: var(--white);
+
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+#featured-chapter {
+  margin: 0 0 12px;
+
+  color: var(--white-soft);
+
+  font-size: 12px;
+}
+
+#featured-description {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+hr {
+  width: min(1050px, calc(100% - 80px));
+
+  margin: 0 auto;
+
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+
+#lectures {
+  width: 100%;
+  padding: 95px 0 120px;
+  text-align: center;
+
+  background-color: var(--background);
+
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+  background-size: 55px 55px;
+}
+
+
+/* SECTION TITLE */
+
+#video-library-name {
+  margin: 0 0 55px;
+
+  color: var(--white);
+
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 500;
+
+  line-height: 1;
+  letter-spacing: -1.5px;
+}
+
+
+/* FILTER FORM */
+
+#form {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  gap: 35px;
+
+  margin: 0 auto;
+}
+
+
+/* CLASS FILTER */
+
+.lecture-filter {
+  width: 380px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+
+  text-align: center;
+}
+
+
+.lecture-filter label {
+  color: var(--muted);
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+
+/* SELECT */
+
+.lecture-filter select {
+  width: 380px;
+  height: 65px;
+
+  padding: 0 55px 0 22px;
+
+  appearance: none;
+
+  color: var(--white-soft);
+  background-color: var(--surface);
+
+  background-image:
+    linear-gradient(
+      45deg,
+      transparent 50%,
+      var(--gold) 50%
+    ),
+    linear-gradient(
+      135deg,
+      var(--gold) 50%,
+      transparent 50%
+    );
+
+  background-position:
+    calc(100% - 25px) 50%,
+    calc(100% - 19px) 50%;
+
+  background-size:
+    7px 7px,
+    7px 7px;
+
+  background-repeat: no-repeat;
+
+  border: 1px solid var(--border);
+
+  outline: none;
+
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition:
+    border-color .25s ease,
+    background-color .25s ease,
+    transform .25s ease;
+}
+
+
+.lecture-filter select:hover {
+  background-color: var(--surface-light);
+  border-color: var(--gold-dark);
+
+  transform: translateY(-2px);
+}
+
+
+.lecture-filter select:focus {
+  border-color: var(--gold);
+
+  box-shadow: 0 0 0 1px var(--gold-dark);
+}
+
+
+.lecture-filter select option {
+  background: var(--surface);
+  color: var(--white-soft);
+}
+
+
+/* SUBMIT */
+
+#form button[type="submit"] {
+  width: 160px;
+  height: 65px;
+
+  color: var(--gold-light);
+  background: transparent;
+
+  border: 1px solid var(--gold-dark);
+
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  cursor: pointer;
+
+  transition:
+    background-color .25s ease,
+    border-color .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+
+#form button[type="submit"]:hover {
+  background-color: rgba(197,165,106,.08);
+
+  border-color: var(--gold);
+
+  color: var(--white);
+
+  transform: translateY(-2px);
+}
+
+
+#form button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   VIDEO GRID
+   ========================================================= */
+
+#video-list {
+  width: min(1050px, calc(100% - 80px));
+
+  margin: 70px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 28px;
+
+  text-align: left;
+}
+
+
+
+/* =========================================================
+   VIDEO CARD
+   ========================================================= */
+
+.video-item {
+  display: flex;
+
+  flex-direction: column;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  transition:
+    border-color .25s ease,
+    transform .25s ease,
+    background-color .25s ease;
+}
+
+.video-item:hover {
+  border-color: var(--border-light);
+
+  background-color: var(--surface-light);
+
+  transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   VIDEO
+   ========================================================= */
+
+.video-player {
+  width: 100%;
+
+  background: #050607;
+
+  border-bottom: 1px solid var(--border);
+
+  overflow: hidden;
+}
+
+.video-element {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  background: #050607;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   VIDEO INFORMATION
+   ========================================================= */
+
+.video-info {
+  padding: 25px 25px 20px;
+}
+
+
+/* class + duration */
+
+.video-meta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 13px;
+}
+
+.video-class {
+  color: var(--gold);
+
+  font-size: 8px;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.video-duration {
+  color: var(--muted);
+
+  font-size: 8px;
+  font-weight: 500;
+
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.video-duration::before {
+  content: "•";
+
+  margin-right: 12px;
+
+  color: var(--border-light);
+}
+
+
+/* title */
+
+.video-title {
+  margin: 0 0 8px;
+
+  color: var(--white);
+
+  font-family: var(--serif);
+
+  font-size: 24px;
+  font-weight: 500;
+
+  line-height: 1.2;
+}
+
+
+/* chapter */
+
+.video-chapter {
+  margin: 0 0 12px;
+
+  color: var(--white-soft);
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+
+/* description */
+
+.video-description {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   ACTION
+   ========================================================= */
+
+.video-actions {
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 25px 25px;
+}
+
+.video-download {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 43px;
+
+  color: var(--gold-light);
+
+  background: transparent;
+
+  border: 1px solid var(--gold-dark);
+
+  text-decoration: none;
+
+  font-size: 8px;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  transition:
+    background-color .2s ease,
+    border-color .2s ease,
+    color .2s ease;
+}
+
+.video-download:hover {
+  background-color: rgba(197, 165, 106, .08);
+
+  border-color: var(--gold);
+
+  color: var(--white);
+}
+
+#footer {
+  padding: 70px 8% 30px;
+  background: var(--black);
+  border-top: 1px solid var(--border);
+}
+
+#footer-main {
+  text-align: center;
+}
+
+#footer-name {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--white);
+}
+
+#footer-title {
+  margin: 8px 0 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+#footer-links {
+  margin: 45px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+#footer-links a {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--white-soft);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+#footer-links a:hover {
+  color: var(--gold-light);
+}
+
+#footer-bottom {
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--border);
+}
+
+#footer-bottom p {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+#video-list:empty::after {
+  content: "No lectures found.";
+
+  grid-column: 1 / -1;
+
+  padding: 60px 0;
+
+  color: var(--muted);
+
+  font-family: var(--serif);
+  font-size: 20px;
+
+  font-style: italic;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* =========================================================
+   RESPONSIVE — LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  #hero,
+  #featured-lecture,
+  #lectures {
+    width: calc(100% - 100px);
+  }
+
+  hr {
+    width: calc(100% - 100px);
+  }
+
+  #hero {
+    padding: 100px 0 65px;
+  }
+
+  #featured-lecture {
+    padding-bottom: 75px;
+  }
+
+  #video-list {
+    width: 100%;
+    gap: 24px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  #hero,
+  #featured-lecture {
+    width: calc(100% - 70px);
+  }
+
+  hr {
+    width: calc(100% - 70px);
+  }
+
+  #hero {
+    padding: 90px 0 60px;
+  }
+
+  #hero-tagline {
+    font-size: clamp(46px, 7vw, 64px);
+  }
+
+  #featured-lecture {
+    padding-bottom: 65px;
+  }
+
+  #lectures {
+    padding: 80px 35px 100px;
+  }
+
+  #video-library-name {
+    font-size: 38px;
+    margin-bottom: 45px;
+  }
+
+  #form {
+    gap: 25px;
+  }
+
+  .lecture-filter {
+    width: 320px;
+  }
+
+  .lecture-filter select {
+    width: 320px;
+  }
+
+  #form button[type="submit"] {
+    width: 145px;
+  }
+
+  #video-list {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  #hero,
+  #featured-lecture {
+    width: calc(100% - 35px);
+  }
+
+  hr {
+    width: calc(100% - 35px);
+  }
+
+  #hero {
+    padding: 75px 0 55px;
+  }
+
+  #hero-title {
+    font-size: 9px;
+    letter-spacing: 3px;
+  }
+
+  #hero-tagline {
+    font-size: 46px;
+    letter-spacing: -1px;
+  }
+
+  #hero-desc {
+    font-size: 13px;
+  }
+
+  #featured-lecture {
+    padding-bottom: 60px;
+  }
+
+  #featured-info {
+    padding: 22px 2px 0;
+  }
+
+  #featured-title {
+    font-size: 27px;
+  }
+
+  #featured-chapter {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  #featured-description {
+    font-size: 12px;
+  }
+
+  #lectures {
+    width: 100%;
+    padding: 65px 20px 90px;
+  }
+
+  #video-library-name {
+    font-size: 32px;
+    margin-bottom: 35px;
+  }
+
+  #form {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lecture-filter {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .lecture-filter select {
+    width: 100%;
+    height: 58px;
+    font-size: 13px;
+  }
+
+  #form button[type="submit"] {
+    width: 100%;
+    max-width: 380px;
+    height: 58px;
+  }
+
+  #video-list {
+    width: 100%;
+    margin-top: 50px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .video-info {
+    padding: 22px 20px 18px;
+  }
+
+  .video-actions {
+    padding: 0 20px 20px;
+  }
+
+  .video-title {
+    font-size: 22px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  #hero-tagline {
+    font-size: 40px;
+  }
+
+  #hero-desc {
+    font-size: 12px;
+  }
+
+  #video-library-name {
+    font-size: 29px;
+  }
+
+  #featured-title {
+    font-size: 24px;
+  }
+
+  .video-title {
+    font-size: 20px;
+  }
+
+  .video-info {
+    padding: 20px 16px 16px;
+  }
+
+  .video-actions {
+    padding: 0 16px 16px;
+  }
+}

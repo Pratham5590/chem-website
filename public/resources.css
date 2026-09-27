@@ -868,14 +868,14 @@ form button[type="submit"]:active {
    TABLET
    ======================================== */
 
-@media (max-width: 1000px) {
+/* =========================================================
+   RESPONSIVE — LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
 
   #nav-bar {
     padding: 25px 5% 0;
-  }
-
-  #navbar {
-    flex-wrap: wrap;
   }
 
   #website-name {
@@ -896,30 +896,21 @@ form button[type="submit"]:active {
   #contact-nav {
     width: 48px;
     height: 48px;
-
     margin-left: 30px;
   }
 
-
-  /* HERO */
-
   #hero {
     min-height: 400px;
-
-    padding: 130px 7% 90px;
+    padding: 120px 7% 85px;
   }
 
   #hero-tagline {
     font-size: clamp(44px, 7vw, 68px);
   }
 
-
-  /* RESOURCE LIBRARY */
-
   #resource-library {
     width: 90%;
     padding: 85px 0 120px;
-
     gap: 28px;
   }
 
@@ -935,16 +926,10 @@ form button[type="submit"]:active {
     width: 240px;
   }
 
-
-  /* RESOURCE CARD */
-
   .resource-item {
     min-height: 340px;
-
     grid-template-columns: 70px minmax(0, 1fr) 150px;
-
     gap: 35px;
-
     padding: 50px 45px;
   }
 
@@ -954,11 +939,11 @@ form button[type="submit"]:active {
 }
 
 
-/* ========================================
-   TABLET / SMALL LAPTOP
-   ======================================== */
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
 
   #nav-bar {
     padding: 20px 6% 0;
@@ -966,13 +951,12 @@ form button[type="submit"]:active {
 
   #navbar {
     padding: 20px 0 22px;
+    flex-wrap: wrap;
   }
 
   #website-name {
     width: 100%;
-
     margin-bottom: 22px;
-
     text-align: center;
   }
 
@@ -990,22 +974,16 @@ form button[type="submit"]:active {
   #contact-nav {
     width: 44px;
     height: 44px;
-
     margin-left: 24px;
   }
 
-
-  /* HERO */
-
   #hero {
     min-height: 360px;
-
-    padding: 110px 7% 80px;
+    padding: 105px 7% 75px;
   }
 
   #hero-name {
     margin-bottom: 20px;
-
     font-size: 10px;
     letter-spacing: 3px;
   }
@@ -1016,48 +994,31 @@ form button[type="submit"]:active {
 
   #hero-desc {
     max-width: 550px;
-
     margin-top: 25px;
-
     font-size: 16px;
   }
-
-
-  /* DIVIDER */
 
   main > hr {
     width: 88%;
   }
 
-
-  /* RESOURCE LIBRARY */
-
   #resource-library {
     width: 88%;
-
     padding: 75px 0 100px;
-
     gap: 30px;
   }
 
   #resorce-library-name {
     font-size: 36px;
-
     margin-bottom: 5px;
   }
 
-
-  /* FORM */
-
   form {
     width: 100%;
-
     display: flex;
     flex-wrap: wrap;
-
     justify-content: center;
     align-items: flex-end;
-
     gap: 25px;
   }
 
@@ -1073,25 +1034,15 @@ form button[type="submit"]:active {
     width: 250px;
   }
 
-
-  /* RESOURCE LIST */
-
   #resource-list {
     margin-top: 35px;
-
     gap: 25px;
   }
 
-
-  /* RESOURCE CARD */
-
   .resource-item {
     min-height: auto;
-
     grid-template-columns: 65px minmax(0, 1fr);
-
     gap: 25px;
-
     padding: 45px 35px;
   }
 
@@ -1105,26 +1056,20 @@ form button[type="submit"]:active {
 
   .resource-meta {
     grid-column: 2;
-
     height: auto;
-
     padding: 25px 0 0;
-
     flex-direction: row;
-
     align-items: center;
     justify-content: space-between;
-
     text-align: left;
-
     border-top: 1px solid var(--border);
   }
 }
 
 
-/* ========================================
-   MOBILE
-   ======================================== */
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
 
 @media (max-width: 600px) {
 
@@ -1134,13 +1079,11 @@ form button[type="submit"]:active {
 
   #navbar {
     padding: 18px 0 20px;
-
     justify-content: center;
   }
 
   #website-name {
     font-size: 25px;
-
     margin-bottom: 20px;
   }
 
@@ -1151,7 +1094,6 @@ form button[type="submit"]:active {
   #contact-navbar-link {
     margin-left: 0;
     margin-right: 18px;
-
     font-size: 13px;
   }
 
@@ -1167,52 +1109,36 @@ form button[type="submit"]:active {
     bottom: -7px;
   }
 
-
-  /* HERO */
-
   #hero {
     min-height: 330px;
-
     padding: 90px 6% 70px;
   }
 
   #hero-name {
     margin-bottom: 18px;
-
     font-size: 9px;
     letter-spacing: 2.5px;
   }
 
   #hero-tagline {
     font-size: clamp(36px, 11vw, 50px);
-
     line-height: 1.1;
   }
 
   #hero-desc {
     max-width: 360px;
-
     margin-top: 22px;
-
     font-size: 15px;
     line-height: 1.6;
   }
-
-
-  /* DIVIDER */
 
   main > hr {
     width: 88%;
   }
 
-
-  /* RESOURCE LIBRARY */
-
   #resource-library {
     width: 88%;
-
     padding: 65px 0 85px;
-
     gap: 25px;
   }
 
@@ -1220,16 +1146,10 @@ form button[type="submit"]:active {
     font-size: 30px;
   }
 
-
-  /* FORM */
-
   form {
     width: 100%;
-
     flex-direction: column;
-
     align-items: center;
-
     gap: 22px;
   }
 
@@ -1240,37 +1160,25 @@ form button[type="submit"]:active {
   #resource-library select {
     width: 100%;
     max-width: 340px;
-
     height: 58px;
-
     font-size: 14px;
   }
 
   form button[type="submit"] {
     width: 100%;
     max-width: 340px;
-
     height: 58px;
   }
 
-
-  /* RESOURCE LIST */
-
   #resource-list {
     margin-top: 25px;
-
     gap: 20px;
   }
-
-
-  /* RESOURCE CARD */
 
   .resource-item {
     display: flex;
     flex-direction: column;
-
     gap: 20px;
-
     padding: 35px 28px;
   }
 
@@ -1284,9 +1192,7 @@ form button[type="submit"]:active {
 
   .resource-title {
     margin-bottom: 15px;
-
     font-size: clamp(28px, 9vw, 38px);
-
     line-height: 1.15;
   }
 
@@ -1300,24 +1206,17 @@ form button[type="submit"]:active {
 
   .resource-description {
     font-size: 15px;
-
     line-height: 1.7;
   }
 
   .resource-meta {
     width: 100%;
-
     height: auto;
-
     padding: 20px 0 0;
-
     flex-direction: row;
-
     align-items: center;
     justify-content: space-between;
-
     border-top: 1px solid var(--border);
-
     text-align: left;
   }
 
@@ -1331,9 +1230,9 @@ form button[type="submit"]:active {
 }
 
 
-/* ========================================
-   SMALL MOBILE
-   ======================================== */
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
 
 @media (max-width: 400px) {
 
@@ -1347,7 +1246,6 @@ form button[type="submit"]:active {
   #resources,
   #contact-navbar-link {
     margin-right: 12px;
-
     font-size: 11px;
   }
 

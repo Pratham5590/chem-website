@@ -1,0 +1,1097 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+	--black: #080a0c;
+	--background: #0c0f12;
+	--surface: #11151a;
+	--surface-light: #171c22;
+
+	--white: #f2eee5;
+	--white-soft: #d2cec5;
+	--muted: #858a91;
+
+	--gold: #c5a56a;
+	--gold-light: #d8bc82;
+	--gold-dark: #917342;
+
+	--border: #252b32;
+	--border-light: #303740;
+
+	--serif: 'Playfair Display', serif;
+	--sans: 'DM Sans', sans-serif;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--sans);
+	background: var(--background);
+	color: var(--white);
+
+	overflow-x: hidden;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+
+/* =========================================================
+   PAGE ATMOSPHERE
+========================================================= */
+
+body::before {
+	content: '';
+
+	position: fixed;
+	inset: 0;
+
+	background:
+		radial-gradient(
+			circle at 75% 15%,
+			rgba(197, 165, 106, 0.055),
+			transparent 28%
+		),
+		radial-gradient(
+			circle at 10% 80%,
+			rgba(197, 165, 106, 0.025),
+			transparent 30%
+		);
+
+	pointer-events: none;
+	z-index: -2;
+}
+
+
+/* =========================================================
+   SCIENTIFIC GRID
+========================================================= */
+
+body::after {
+	content: '';
+
+	position: fixed;
+	inset: 0;
+
+	background-image:
+		linear-gradient(
+			rgba(255, 255, 255, 0.018) 1px,
+			transparent 1px
+		),
+		linear-gradient(
+			90deg,
+			rgba(255, 255, 255, 0.018) 1px,
+			transparent 1px
+		);
+
+	background-size: 70px 70px;
+
+	pointer-events: none;
+	z-index: -1;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+#nav-bar {
+	width: 100%;
+
+	padding: 30px 6% 0;
+
+	position: relative;
+	z-index: 20;
+}
+
+#navbar {
+	display: flex;
+	align-items: center;
+
+	width: 100%;
+
+	padding: 23px 0 25px;
+
+	border-bottom: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   WEBSITE NAME
+========================================================= */
+
+#website-name {
+	margin-right: auto;
+
+	font-family: var(--serif);
+
+	font-size: 31px;
+
+	font-weight: 600;
+
+	letter-spacing: 0.5px;
+
+	color: var(--white);
+
+	transition: color 0.25s ease;
+}
+
+#website-name:hover {
+	color: var(--gold);
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+#navbar > a:not(#contact-nav) {
+	position: relative;
+}
+
+#navbar a {
+	font-size: 16px;
+
+	font-weight: 500;
+
+	color: var(--muted);
+
+	transition: color 0.25s ease;
+}
+
+#navbar a:hover {
+	color: var(--white);
+}
+
+
+/* NAV UNDERLINE */
+
+#navbar a:not(#contact-nav)::after {
+	content: '';
+
+	position: absolute;
+
+	left: 0;
+	bottom: -10px;
+
+	width: 0;
+	height: 1px;
+
+	background: var(--gold);
+
+	transition: width 0.25s ease;
+}
+
+#navbar a:not(#contact-nav):hover::after {
+	width: 100%;
+}
+
+
+/* =========================================================
+   NAVIGATION SPACING
+========================================================= */
+
+#return-home {
+	margin-left: 50px;
+}
+
+#about-navbar,
+#videos,
+#resources,
+#contact-navbar-link {
+	margin-left: 40px;
+}
+
+
+/* =========================================================
+   PROFILE IMAGE
+========================================================= */
+
+#contact-nav {
+	width: 53px;
+	height: 53px;
+
+	margin-left: 44px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: 50%;
+
+	border: 1px solid var(--border-light);
+
+	overflow: hidden;
+
+	transition:
+		border-color 0.3s ease,
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+#contact-nav img {
+	width: 100%;
+	height: 100%;
+
+	object-fit: cover;
+
+	transition: transform 0.4s ease;
+}
+
+#contact-nav:hover {
+	border-color: var(--gold);
+
+	transform: translateY(-3px);
+
+	box-shadow:
+		0 0 0 5px rgba(197, 165, 106, 0.05),
+		0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+#contact-nav:hover img {
+	transform: scale(1.07);
+}
+
+#footer {
+  padding: 70px 8% 30px;
+  background: var(--black);
+  border-top: 1px solid var(--border);
+}
+
+#footer-main {
+  text-align: center;
+}
+
+#footer-name {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--white);
+}
+
+#footer-title {
+  margin: 8px 0 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+#footer-links {
+  margin: 45px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+#footer-links a {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--white-soft);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+#footer-links a:hover {
+  color: var(--gold-light);
+}
+
+#footer-bottom {
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--border);
+}
+
+#footer-bottom p {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* =========================================================
+   CONTACT PAGE
+   ========================================================= */
+
+main {
+  width: 100%;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+#hero {
+  width: min(1100px, calc(100% - 80px));
+
+  margin: 0 auto;
+
+  padding: 125px 0 95px;
+
+  text-align: center;
+}
+
+
+#hero-title {
+  margin: 0 0 28px;
+
+  color: var(--gold);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+
+#hero-tagline {
+  max-width: 950px;
+
+  margin: 0 auto;
+
+  color: var(--white);
+
+  font-family: var(--serif);
+
+  font-size: clamp(58px, 7vw, 88px);
+  font-weight: 500;
+
+  line-height: 1.02;
+
+  letter-spacing: -2.5px;
+}
+
+
+#hero-tagline span {
+  color: var(--gold-light);
+
+  font-style: italic;
+}
+
+
+#hero-desc {
+  max-width: 650px;
+
+  margin: 35px auto 0;
+
+  color: var(--muted);
+
+  font-size: 16px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   MAIN DIVIDERS
+   ========================================================= */
+
+main > hr {
+  width: min(1100px, calc(100% - 80px));
+
+  margin: 0 auto;
+
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   CONTACT INFORMATION
+   ========================================================= */
+
+#contact-info {
+  width: min(1100px, calc(100% - 80px));
+
+  margin: 0 auto;
+
+  padding: 85px 0 105px;
+}
+
+
+#contact-info > #title {
+  margin: 0 0 32px;
+
+  color: var(--white);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+
+/* Divider below section title */
+
+#contact-info > hr {
+  width: 100%;
+
+  margin: 0;
+
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   CONTACT CARDS
+   ========================================================= */
+
+.contact-card {
+  width: 100%;
+
+  padding: 38px 0 35px;
+
+  border-bottom: 1px solid var(--border);
+
+  text-align: left;
+}
+
+
+.card-title {
+  margin: 0 0 16px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+
+/* Phone + email */
+
+#number,
+#email {
+  margin: 0;
+
+  color: var(--white);
+
+  font-family: var(--serif);
+
+  font-size: 30px;
+  font-weight: 500;
+
+  line-height: 1.3;
+}
+
+
+.contact-hyperlink {
+  display: inline-block;
+
+  margin-top: 17px;
+
+  color: var(--gold-light);
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 2.5px;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition:
+    color .2s ease,
+    transform .2s ease;
+}
+
+
+.contact-hyperlink:hover {
+  color: var(--white);
+
+  transform: translateX(5px);
+}
+
+
+/* =========================================================
+   SOCIALS
+   ========================================================= */
+
+.contact-card:has(+ .socials-content) {
+  padding-bottom: 18px;
+
+  border-bottom: none;
+}
+
+
+.socials-content {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  padding-bottom: 5px;
+}
+
+
+.social-link {
+  min-height: 68px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  padding: 0 20px;
+
+  color: var(--white-soft);
+
+  background-color: var(--surface);
+
+  border: 1px solid var(--border);
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  letter-spacing: 1px;
+
+  transition:
+    background-color .25s ease,
+    border-color .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+
+.social-link svg {
+  width: 19px;
+  height: 19px;
+
+  flex-shrink: 0;
+}
+
+
+.social-link:hover {
+  color: var(--gold-light);
+
+  background-color: var(--surface-light);
+
+  border-color: var(--gold-dark);
+
+  transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   ENQUIRY
+   ========================================================= */
+
+#enquiry {
+  width: min(1100px, calc(100% - 80px));
+
+  margin: 0 auto;
+
+  padding: 105px 0 130px;
+}
+
+
+#enquiry-title {
+  margin: 0 0 38px;
+
+  color: var(--white);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ENQUIRY FORM CARD
+   ========================================================= */
+
+#enquiry-form-card {
+  width: 100%;
+
+  padding: 50px;
+
+  background-color: var(--surface);
+
+  border: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+#enquiry-form {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  column-gap: 40px;
+  row-gap: 30px;
+}
+
+
+/* =========================================================
+   LABELS
+   ========================================================= */
+
+#enquiry-form .label {
+  display: block;
+
+  margin-bottom: 11px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 2.5px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+#enquiry-form input {
+  width: 100%;
+  height: 58px;
+
+  padding: 0 18px;
+
+  color: var(--white);
+
+  background-color: var(--background);
+
+  border: 1px solid var(--border);
+
+  outline: none;
+
+  font-family: var(--sans);
+  font-size: 14px;
+
+  transition:
+    border-color .2s ease,
+    background-color .2s ease;
+}
+
+
+#enquiry-form input::placeholder {
+  color: var(--muted);
+}
+
+
+#enquiry-form input:hover {
+  border-color: var(--border-light);
+}
+
+
+#enquiry-form input:focus {
+  background-color: var(--surface-light);
+
+  border-color: var(--gold);
+}
+
+
+/* =========================================================
+   TEXTAREA
+   ========================================================= */
+
+#enquiry-form textarea {
+  width: 100%;
+  min-height: 150px;
+
+  padding: 17px 18px;
+
+  resize: vertical;
+
+  color: var(--white);
+
+  background-color: var(--background);
+
+  border: 1px solid var(--border);
+
+  outline: none;
+
+  font-family: var(--sans);
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  transition:
+    border-color .2s ease,
+    background-color .2s ease;
+}
+
+
+#enquiry-form textarea::placeholder {
+  color: var(--muted);
+}
+
+
+#enquiry-form textarea:hover {
+  border-color: var(--border-light);
+}
+
+
+#enquiry-form textarea:focus {
+  background-color: var(--surface-light);
+
+  border-color: var(--gold);
+}
+
+
+/* =========================================================
+   SEND BUTTON
+   ========================================================= */
+
+#enquiry-form button {
+  grid-column: 1 / -1;
+
+  justify-self: start;
+
+  width: 210px;
+  height: 58px;
+
+  margin-top: 5px;
+
+  color: var(--gold-light);
+
+  background-color: transparent;
+
+  border: 1px solid var(--gold-dark);
+
+  font-family: var(--sans);
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 2.5px;
+
+  cursor: pointer;
+
+  transition:
+    background-color .25s ease,
+    border-color .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+
+#enquiry-form button:hover {
+  color: var(--white);
+
+  background-color: rgba(197, 165, 106, .08);
+
+  border-color: var(--gold);
+
+  transform: translateY(-2px);
+}
+
+
+#enquiry-form button:active {
+  transform: translateY(0);
+}
+
+#confirmation-message {
+  grid-column: 1 / -1;
+
+  margin: 5px 0 0;
+
+  color: var(--gold-light);
+
+  font-size: 13px;
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
+
+  animation: confirmationAppear .3s ease;
+}
+
+
+#error-message {
+  grid-column: 1 / -1;
+
+  margin: 5px 0 0;
+
+  color: #c97878;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
+}
+
+
+@keyframes confirmationAppear {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+/* =========================================================
+   RESPONSIVE — LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  #hero,
+  #contact-info,
+  #enquiry {
+    width: calc(100% - 100px);
+  }
+
+  main > hr {
+    width: calc(100% - 100px);
+  }
+
+  #hero {
+    padding: 110px 0 85px;
+  }
+
+  #hero-tagline {
+    font-size: clamp(54px, 7vw, 78px);
+  }
+
+  #enquiry-form-card {
+    padding: 45px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  #hero,
+  #contact-info,
+  #enquiry {
+    width: calc(100% - 70px);
+  }
+
+  main > hr {
+    width: calc(100% - 70px);
+  }
+
+  #hero {
+    padding: 95px 0 75px;
+  }
+
+  #hero-title {
+    font-size: 11px;
+    letter-spacing: 3.5px;
+  }
+
+  #hero-tagline {
+    font-size: clamp(48px, 7.5vw, 64px);
+  }
+
+  #hero-desc {
+    max-width: 580px;
+    margin-top: 28px;
+    font-size: 15px;
+  }
+
+  #contact-info {
+    padding: 75px 0 90px;
+  }
+
+  #number,
+  #email {
+    font-size: 28px;
+  }
+
+  .socials-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #enquiry {
+    padding: 90px 0 110px;
+  }
+
+  #enquiry-form-card {
+    padding: 40px;
+  }
+
+  #enquiry-form {
+    column-gap: 28px;
+    row-gap: 26px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  #hero,
+  #contact-info,
+  #enquiry {
+    width: calc(100% - 35px);
+  }
+
+  main > hr {
+    width: calc(100% - 35px);
+  }
+
+  #hero {
+    padding: 80px 0 65px;
+  }
+
+  #hero-title {
+    margin-bottom: 22px;
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  #hero-tagline {
+    font-size: clamp(42px, 12vw, 50px);
+    letter-spacing: -1.2px;
+  }
+
+  #hero-desc {
+    margin-top: 25px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  #contact-info {
+    padding: 65px 0 80px;
+  }
+
+  #contact-info > #title,
+  #enquiry-title {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+  }
+
+  .contact-card {
+    padding: 32px 0 30px;
+  }
+
+  #number,
+  #email {
+    font-size: 25px;
+  }
+
+  .socials-content {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .social-link {
+    justify-content: flex-start;
+    min-height: 62px;
+  }
+
+  #enquiry {
+    padding: 75px 0 90px;
+  }
+
+  #enquiry-form-card {
+    padding: 30px 22px;
+  }
+
+  #enquiry-form {
+    grid-template-columns: 1fr;
+    row-gap: 25px;
+  }
+
+  #enquiry-form input {
+    height: 55px;
+  }
+
+  #enquiry-form textarea {
+    min-height: 140px;
+  }
+
+  #enquiry-form button {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  #hero-tagline {
+    font-size: 40px;
+  }
+
+  #hero-desc {
+    font-size: 13px;
+  }
+
+  #number,
+  #email {
+    font-size: 22px;
+  }
+
+  #enquiry-form-card {
+    padding: 25px 18px;
+  }
+
+  .social-link {
+    font-size: 12px;
+  }
+}

@@ -2,9 +2,9 @@ import http from 'http';
 import { URL } from 'url';
 import fs from 'fs';
 import path from 'path';
-import { getResources } from './database.js';
+import { getResources, getVideos, addQuery } from './database.js';
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, "http://localhost:3000");
   let file;
   if (req.method === "GET" && (url.pathname === "/" || url.pathname === "/home.html")) {
@@ -61,6 +61,101 @@ const server = http.createServer((req, res) => {
       "Content-Type" : "text/css"
     })
     res.end(fs.readFileSync("public/resources.css"))
+  } else if (req.method === "GET" && url.pathname === "/videos.html") {
+    res.writeHead(200, {
+      "Content-Type" : "text/html"
+    })
+    res.end(fs.readFileSync("public/videos.html"))
+  } else if (req.method === "GET" && url.pathname === "/videos.css") {
+    res.writeHead(200, {
+      "Content-Type" : "text/css"
+    })
+    res.end(fs.readFileSync("public/videos.css"))
+  } else if (req.method === "GET" && url.pathname === "/videos.js") {
+    res.writeHead(200, {
+      "Content-Type" : "text/javascript"
+    })
+    res.end(fs.readFileSync("public/videos.js"))
+  } else if (req.method === "GET" && url.pathname === "/getVideos") {
+    res.writeHead(200, {
+      "Content-Type" : "application/json"
+    })
+    res.end(JSON.stringify(getVideos()));
+  } else if (req.method === "GET" && url.pathname === "/videos/TSO-6-FINAL.mp4") {
+    res.writeHead(200, {
+      "Content-Type" : "video/mp4"
+    })
+    res.end(fs.readFileSync("videos/TSO-6-FINAL.mp4"))
+  } else if (req.method === "GET" && url.pathname === "/videos/The%20Nun%20II%20[Hindi]-1080P.mp4") {
+    res.writeHead(200, {
+      "Content-Type" : "video/mp4"
+    })
+    res.end(fs.readFileSync("videos/look up (1).mp4"))
+  } else if (req.method === "GET" && url.pathname === "/contact.html") {
+    res.writeHead(200, { "Content-Type" : "text/html" })
+    res.end(fs.readFileSync("public/contact.html"));
+  }  else if (req.method === "GET" && url.pathname === "/contact.css") {
+    res.writeHead(200, { "Content-Type" : "text/css" })
+    res.end(fs.readFileSync("public/contact.css"));
+  }  else if (req.method === "GET" && url.pathname === "/contact.js") {
+    res.writeHead(200, { "Content-Type" : "text/javascript" })
+    res.end(fs.readFileSync("public/contact.js"));
+  } else if (req.method === "GET" && url.pathname === "/videos/Copy%20of%20TSO-3-FINAL.mp4") {
+    res.writeHead(200, {
+      "Content-Type" : "video/mp4"
+    })
+    res.end(fs.readFileSync("videos/331030_medium.mp4"))
+  } else if (req.method === "POST" && url.pathname === "/queries") {
+    let body = "";
+
+    req.on("data", chunk => {
+      body += chunk;
+    });
+
+    req.on("end", () => {
+      try {
+        const data = JSON.parse(body);
+
+        const name = data.name;
+        const email = data.email;
+        const subject = data.subject;
+        const message = data.message;
+
+        if (!name || !email || !message) {
+          res.writeHead(400, {
+            "Content-Type": "application/json"
+          });
+
+          res.end(JSON.stringify({
+            success: false,
+            message: "Name, email, and message are required."
+          }));
+
+          return;
+        }
+
+        addQuery(name, email, subject, message);
+
+        res.writeHead(201, {
+          "Content-Type": "application/json"
+        });
+
+        res.end(JSON.stringify({
+          success: true,
+          message: "Your enquiry has been submitted."
+        }));
+
+      } catch (error) {
+        res.writeHead(400, {
+          "Content-Type": "application/json"
+        });
+
+        res.end(JSON.stringify({
+          success: false,
+          message: "Invalid request."
+        }));
+      }
+    });
   }
   else {
     // Fallback for 404 Not Found

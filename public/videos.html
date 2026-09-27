@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="videos.css">
+		<link rel="icon" href="images/image (2).png">
+    <title>Chemistry — Videos</title>
+    <script src="videos.js" defer></script>
+  </head>
+  <body>
+		<section id="nav-bar">
+			<div id="navbar">
+				<div id="website-name" style="display : inline-block">
+					Some name
+				</div>
+				<a id="return-home" href="home.html">Home</a>
+				<a id="about-navbar" href="home.html">About</a>				
+				<a id="videos" href="videos.html">Videos</a>
+				<a id="resources" href="resources.html">Resources</a>
+				<a id="contact-navbar-link" href="contact.html">Contact</a>
+				<div id="contact-nav">
+					<a href="home.html">
+						<img src="images/hero.png">
+					</a>
+				</div>
+			</div>
+		</section>
+    <main>
+      <section id="hero">
+        <p id="hero-title">LECTURES</p>
+        <p id="hero-tagline">Chemistry, <span id="explained">explained</span>.</p>
+        <p id="hero-desc">Watch concepts infold through <span class="hero-desc-span">clear</span>, <span class="hero-desc-span">focused</span> Chemistry lectures.</p>
+      </section>
+      <section id="featured-lecture">
+        <div id="featured-video-wrapper">
+          <video controls id="featured-video">
+            <source src="/videos/TSO-6-FINAL.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div id="featured-info">
+          <div id="featured-meta">
+            <span id="featured-class">CLASS 9</span>
+            <span id="featured-duration">12:27</span>
+          </div>
+          <h2 id="featured-title">
+            The Mole Concept
+          </h2>
+          <p id="featured-chapter">
+            Chapter 1 · Some Basic Concepts of Chemistry
+          </p>
+          <p id="featured-description">
+            Understand the mole, molar mass, and the relationship between
+            microscopic particles and measurable quantities.
+          </p>
+        </div>
+      </section>
+      <hr>
+      <section id="lectures">
+        <h2 id="video-library-name">
+          EXPLORE LECTURES
+        </h2>
+        <form id="form">
+          <div class="lecture-filter">
+            <label for="class-filter">CLASS</label>
+            <select id="class-filter">
+              <option value="all">ALL CLASSES</option>
+              <option value="9">CLASS 9</option>
+              <option value="10">CLASS 10</option>
+              <option value="11">CLASS 11</option>
+              <option value="12">CLASS 12</option>
+            </select>
+          </div>
+          <button type="submit">SUBMIT</button>
+        </form>
+        <div id="video-list"></div>
+      </section>
+    </main>
+		<footer id="footer">
+			<div id="footer-main">
+				<p id="footer-name">Mrs. Devyani Pawar</p>
+				<p id="footer-title">Chemistry Educator</p>
+			</div>
+
+			<div id="footer-links">
+				<a href="home.html">Home</a>
+				<a href="#about">About</a>
+				<a href="videos.html">Videos</a>
+				<a href="resources.html">Resources</a>
+				<a href="contact.html">Contact</a>
+			</div>
+
+			<div id="footer-bottom">
+				<p>© 2026 Mrs. Devyani Pawar. All rights reserved.</p>
+				<p>Made for understanding Chemistry.</p>
+			</div>
+		</footer>
+  </body>
+</html>

@@ -1176,55 +1176,66 @@ main {
   gap: 15px;
 }
 
-@media (max-width: 800px) {
-  #learn {
-    padding: 110px 6% 120px;
-  }
-
-  #learn-cards {
-    grid-template-columns: 1fr;
-    margin-top: 55px;
-  }
-
-  .learn-card {
-    min-height: 320px;
-    padding: 38px;
-  }
-
-  .learn-card-desc {
-    font-size: 17px;
-  }
+#footer {
+  padding: 70px 8% 30px;
+  background: var(--black);
+  border-top: 1px solid var(--border);
 }
 
-@media (max-width: 500px) {
-  #learn {
-    padding: 90px 6% 100px;
-  }
+#footer-main {
+  text-align: center;
+}
 
-  #learn-label {
-    font-size: 11px;
-    letter-spacing: 3px;
-  }
+#footer-name {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--white);
+}
 
-  #learn-desc {
-    font-size: 40px;
-  }
+#footer-title {
+  margin: 8px 0 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 
-  .learn-card {
-    min-height: 300px;
-    padding: 30px;
-  }
+#footer-links {
+  margin: 45px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+}
 
-  .learn-card-desc {
-    margin: 30px 0;
-    font-size: 16px;
-    line-height: 1.6;
-  }
+#footer-links a {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--white-soft);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
 
-  .learn-card-name {
-    font-size: 11px;
-    letter-spacing: 3px;
-  }
+#footer-links a:hover {
+  color: var(--gold-light);
+}
+
+#footer-bottom {
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--border);
+}
+
+#footer-bottom p {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  color: var(--muted);
 }
 
 /* =========================================================
@@ -1502,69 +1513,318 @@ main {
   height: 35px;
 }
 
-#footer {
-  padding: 70px 8% 30px;
-  background: var(--black);
-  border-top: 1px solid var(--border);
+/* =========================================================
+   RESPONSIVE — LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  #hero {
+    gap: 70px;
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  #hero-image {
+    flex-basis: 45%;
+  }
+
+  #hero-image img {
+    height: 620px;
+  }
+
+  #about-teacher,
+  #teachingApproach {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  #approach-cards {
+    max-width: 100%;
+  }
+
+  #learn {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
 }
 
-#footer-main {
-  text-align: center;
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  #nav-bar {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  #navbar > a:not(#contact-nav) {
+    display: none;
+  }
+
+  #contact-nav {
+    margin-left: auto;
+  }
+
+  #hero {
+    min-height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 90px 7% 110px;
+  }
+
+  #hero-text {
+    max-width: 800px;
+    width: 100%;
+  }
+
+  #hero-tagline {
+    font-size: clamp(60px, 10vw, 90px);
+  }
+
+  #hero-image {
+    width: 100%;
+    justify-content: center;
+    margin-top: 60px;
+  }
+
+  #hero-image img {
+    width: min(100%, 600px);
+    height: 620px;
+  }
+
+  #about-teacher {
+    padding: 110px 7% 125px;
+  }
+
+  #about-chemistry-element {
+    margin-top: 75px;
+  }
+
+  #veryShortIntro {
+    position: static;
+    margin-top: 50px;
+  }
+
+  #about-hr {
+    margin-top: 75px;
+  }
+
+  #teachingApproach {
+    padding: 110px 7% 125px;
+  }
+
+  #approach-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: 285px;
+  }
+
+  #learn {
+    padding: 110px 7% 120px;
+  }
+
+  #learn-cards {
+    grid-template-columns: 1fr;
+    margin-top: 55px;
+  }
+
+  .learn-card {
+    min-height: 320px;
+    padding: 38px;
+  }
+
+  .learn-card-desc {
+    font-size: 17px;
+  }
 }
 
-#footer-name {
-  margin: 0;
-  font-family: "Playfair Display", serif;
-  font-size: 30px;
-  font-weight: 400;
-  color: var(--white);
-}
 
-#footer-title {
-  margin: 8px 0 0;
-  font-family: "DM Sans", sans-serif;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-#footer-links {
-  margin: 45px 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 28px;
-}
-
-#footer-links a {
-  font-family: "DM Sans", sans-serif;
-  font-size: 13px;
-  color: var(--white-soft);
-  text-decoration: none;
-  transition: color 0.25s ease;
-}
-
-#footer-links a:hover {
-  color: var(--gold-light);
-}
-
-#footer-bottom {
-  padding-top: 25px;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  border-top: 1px solid var(--border);
-}
-
-#footer-bottom p {
-  margin: 0;
-  font-family: "DM Sans", sans-serif;
-  font-size: 12px;
-  color: var(--muted);
-}
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
 
 @media (max-width: 600px) {
+
+  #nav-bar {
+    padding: 20px 20px 0;
+  }
+
+  #navbar {
+    padding-bottom: 18px;
+  }
+
+  #website-name {
+    font-size: 25px;
+  }
+
+  #contact-nav {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* HERO */
+
+  #hero {
+    padding: 75px 25px 95px;
+  }
+
+  #hero-tagline {
+    font-size: 58px;
+    letter-spacing: -2px;
+  }
+
+  #hero-desc {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  #hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 40px;
+  }
+
+  #hero-buttons button {
+    width: 100%;
+    padding: 17px 25px;
+  }
+
+  #hero-image {
+    margin-top: 60px;
+  }
+
+  #hero-image img {
+    height: 480px;
+  }
+
+  /* ABOUT */
+
+  #about-teacher {
+    padding: 90px 25px 105px;
+  }
+
+  #about-label,
+  #approach-label {
+    font-size: 11px;
+    letter-spacing: 3.5px;
+  }
+
+  #about-tagline {
+    font-size: 47px;
+    letter-spacing: -1px;
+  }
+
+  #about-chemistry-element {
+    width: 280px;
+    height: 280px;
+    margin-top: 70px;
+  }
+
+  #about-chemistry-element::before {
+    inset: -14px;
+  }
+
+  #about-chemistry-element::after {
+    inset: -28px;
+  }
+
+  #veryShortIntro {
+    margin-top: 50px;
+  }
+
+  #teacher-name {
+    font-size: 31px;
+  }
+
+  #teacher-title {
+    font-size: 12px;
+  }
+
+  #about-hr {
+    margin-top: 65px;
+  }
+
+  #about-bio {
+    font-size: 16px;
+    line-height: 1.85;
+  }
+
+  #about-hyperlink {
+    font-size: 14px;
+  }
+
+  /* APPROACH */
+
+  #teachingApproach {
+    padding: 90px 25px 110px;
+  }
+
+  #approach-tagline,
+  #approach-tagline-two {
+    font-size: 43px;
+  }
+
+  #approach-cards {
+    margin-top: 65px;
+  }
+
+  .card {
+    min-height: 255px;
+    padding: 32px;
+  }
+
+  .approach-card-number {
+    margin-bottom: 55px;
+    font-size: 44px;
+  }
+
+  .card h2 {
+    font-size: 21px;
+  }
+
+  .card p {
+    font-size: 15px;
+  }
+
+  /* LEARN */
+
+  #learn {
+    padding: 90px 25px 100px;
+  }
+
+  #learn-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  #learn-desc {
+    font-size: 40px;
+  }
+
+  .learn-card {
+    min-height: 300px;
+    padding: 30px;
+  }
+
+  .learn-card-desc {
+    margin: 30px 0;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .learn-card-name {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  /* FOOTER */
+
   #footer {
     padding: 55px 6% 25px;
   }
@@ -1587,335 +1847,70 @@ main {
 
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE — SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 800px) {
-
-	#learn {
-		padding: 110px 6% 120px;
-	}
-
-	#learn-cards {
-		grid-template-columns: 1fr;
-		margin-top: 55px;
-	}
-
-	.learn-card {
-		min-height: 320px;
-		padding: 38px;
-	}
-
-	.learn-card-desc {
-		font-size: 17px;
-	}
-}
-
-
-@media (max-width: 500px) {
-
-	#learn {
-		padding: 90px 6% 100px;
-	}
-
-	#learn-label {
-		font-size: 11px;
-		letter-spacing: 3px;
-	}
-
-	#learn-desc {
-		font-size: 40px;
-	}
-
-	.learn-card {
-		min-height: 300px;
-		padding: 30px;
-	}
-
-	.learn-card-desc {
-		margin: 30px 0;
-		font-size: 16px;
-		line-height: 1.6;
-	}
-
-	.learn-card-name {
-		font-size: 11px;
-		letter-spacing: 3px;
-	}
-}
-
-
-/* =========================================================
-   LARGE SCREEN
-========================================================= */
-
-@media (max-width: 1200px) {
-
-	#hero {
-		gap: 70px;
-
-		padding-left: 6%;
-		padding-right: 6%;
-	}
-
-	#hero-image {
-		flex-basis: 45%;
-	}
-
-	#hero-image img {
-		height: 620px;
-	}
-
-	#about-teacher,
-	#teachingApproach {
-		padding-left: 6%;
-		padding-right: 6%;
-	}
-
-	#approach-cards {
-		max-width: 100%;
-	}
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 850px) {
-
-	#nav-bar {
-		padding-left: 5%;
-		padding-right: 5%;
-	}
-
-	#navbar > a:not(#contact-nav) {
-		display: none;
-	}
-
-	#contact-nav {
-		margin-left: auto;
-	}
-
-	#hero {
-		min-height: auto;
-
-		flex-direction: column;
-
-		align-items: flex-start;
-
-		padding: 90px 7% 120px;
-	}
-
-	#hero-text {
-		max-width: 800px;
-		width: 100%;
-	}
-
-	#hero-image {
-		width: 100%;
-
-		justify-content: center;
-
-		margin-top: 70px;
-	}
-
-	#hero-image img {
-		width: min(100%, 600px);
-
-		height: 620px;
-	}
-
-	#about-teacher {
-		padding: 110px 7% 125px;
-	}
-
-	#about-chemistry-element {
-		margin-top: 75px;
-	}
-
-	#veryShortIntro {
-		position: static;
-
-		margin-top: 50px;
-	}
-
-	#about-hr {
-		margin-top: 75px;
-	}
-
-	#teachingApproach {
-		padding: 110px 7% 125px;
-	}
-
-	#approach-cards {
-		grid-template-columns: 1fr;
-	}
-
-	.card {
-		min-height: 285px;
-	}
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 560px) {
-
-	#nav-bar {
-		padding: 20px 20px 0;
-	}
-
-	#navbar {
-		padding-bottom: 18px;
-	}
-
-	#website-name {
-		font-size: 25px;
-	}
-
-	#contact-nav {
-		width: 44px;
-		height: 44px;
-	}
-
-
-	/* HERO */
-
-	#hero {
-		padding: 75px 25px 95px;
-	}
-
-	#hero-tagline {
-		font-size: 58px;
-
-		letter-spacing: -2px;
-	}
-
-	#hero-desc {
-		font-size: 16px;
-
-		line-height: 1.8;
-	}
-
-	#hero-buttons {
-		flex-direction: column;
-
-		align-items: stretch;
-
-		margin-top: 40px;
-	}
-
-	#hero-buttons button {
-		width: 100%;
-
-		padding: 17px 25px;
-	}
-
-	#hero-image {
-		margin-top: 60px;
-	}
-
-	#hero-image img {
-		height: 480px;
-	}
-
-
-	/* ABOUT */
-
-	#about-teacher {
-		padding: 90px 25px 105px;
-	}
-
-	#about-label,
-	#approach-label {
-		font-size: 11px;
-
-		letter-spacing: 3.5px;
-	}
-
-	#about-tagline {
-		font-size: 47px;
-
-		letter-spacing: -1px;
-	}
-
-	#about-chemistry-element {
-		width: 280px;
-		height: 280px;
-
-		margin-top: 70px;
-	}
-
-	#about-chemistry-element::before {
-		inset: -14px;
-	}
-
-	#about-chemistry-element::after {
-		inset: -28px;
-	}
-
-	#veryShortIntro {
-		margin-top: 50px;
-	}
-
-	#teacher-name {
-		font-size: 31px;
-	}
-
-	#teacher-title {
-		font-size: 12px;
-	}
-
-	#about-hr {
-		margin-top: 65px;
-	}
-
-	#about-bio {
-		font-size: 16px;
-
-		line-height: 1.85;
-	}
-
-	#about-hyperlink {
-		font-size: 14px;
-	}
-
-
-	/* APPROACH */
-
-	#teachingApproach {
-		padding: 90px 25px 110px;
-	}
-
-	#approach-tagline,
-	#approach-tagline-two {
-		font-size: 43px;
-	}
-
-	#approach-cards {
-		margin-top: 65px;
-	}
-
-	.card {
-		min-height: 255px;
-
-		padding: 32px;
-	}
-
-	.approach-card-number {
-		margin-bottom: 55px;
-
-		font-size: 44px;
-	}
-
-	.card h2 {
-		font-size: 21px;
-	}
-
-	.card p {
-		font-size: 15px;
-	}
+@media (max-width: 400px) {
+
+  #website-name {
+    font-size: 23px;
+  }
+
+  #hero {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #hero-tagline {
+    font-size: 48px;
+  }
+
+  #hero-desc {
+    font-size: 14px;
+  }
+
+  #hero-image img {
+    height: 420px;
+  }
+
+  #about-teacher,
+  #teachingApproach,
+  #learn {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #about-tagline {
+    font-size: 40px;
+  }
+
+  #about-chemistry-element {
+    width: 240px;
+    height: 240px;
+  }
+
+  #teacher-name {
+    font-size: 27px;
+  }
+
+  #approach-tagline,
+  #approach-tagline-two {
+    font-size: 36px;
+  }
+
+  .card {
+    padding: 27px;
+  }
+
+  .learn-card {
+    padding: 26px;
+  }
+
+  #learn-desc {
+    font-size: 34px;
+  }
+
+  #footer-links {
+    gap: 15px 18px;
+  }
 }
