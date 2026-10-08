@@ -1,51 +1,41 @@
-import Database from "better-sqlite3";
+import mysql from "mysql2/promise";
 
-const db = new Database("chemistryWebsite.db");
-db.exec(`CREATE TABLE IF NOT EXISTS resources (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  title TEXT NOT NULL,
-  class INTEGER NOT NULL,
-  chapter TEXT,
-  description TEXT,
-  file_path TEXT NOT NULL,
-  created_at TEXT CURRENT_TIMESTAMP);`);
-db.exec(`CREATE TABLE IF NOT EXISTS videos (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  title TEXT NOT NULL,
-  class INTEGER NOT NULL,
-  chapter TEXT,
-  description TEXT,
-  file_path TEXT NOT NULL,
-  thumbnail_path TEXT,
-  duration TEXT,
-  created_at TEXT DEFAULT CURRENT_TIMESTAMP);`);
+const db = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: process.env.DB_PASSWORD,
+  database: "chemistry_website",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
 
-db.exec(`CREATE TABLE IF NOT EXISTS queries (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL,
-  email TEXT NOT NULL,
-  subject TEXT,
-  message TEXT NOT NULL,
-  created_at TEXT DEFAULT CURRENT_TIMESTAMP
-);`);
+export async function getResources() {
+  const [resources] = await db.query(`
+    SELECT * FROM resources
+  `);
 
-export function getResources() {
-  const statement = db.prepare(`SELECT * FROM resources`);
-  let resources = statement.all();
-  return resources
+  return resources;
 }
 
-export function getVideos() {
-  const statement = db.prepare(`SELECT * FROM videos`);
-  let videos = statement.all();
+export async function getVideos() {
+  const [videos] = await db.query(`
+    SELECT * FROM videos
+  `);
+
   return videos;
 }
 
-export function addQuery(name, email, subject, message) {
-  const statement = db.prepare(`
+export async function addQuery(name, email, subject, message) {
+  const [result] = await db.execute(`
     INSERT INTO queries (name, email, subject, message)
     VALUES (?, ?, ?, ?)
-  `);
+  `, [
+    name,
+    email,
+    subject,
+    message
+  ]);
 
-  return statement.run(name, email, subject, message);
+  return result;
 }

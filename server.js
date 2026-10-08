@@ -1,118 +1,245 @@
 import http from 'http';
 import { URL } from 'url';
 import fs from 'fs';
-import path from 'path';
 import { getResources, getVideos, addQuery } from './database.js';
 
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, "http://localhost:3000");
   let file;
-  if (req.method === "GET" && (url.pathname === "/" || url.pathname === "/home.html")) {
+
+  if (
+    req.method === "GET" &&
+    (url.pathname === "/" || url.pathname === "/home.html")
+  ) {
     const home = fs.readFileSync("public/home.html", "utf8");
-    res.writeHead(200, { "Content-Type": "text/html" });
+
+    res.writeHead(200, {
+      "Content-Type": "text/html"
+    });
+
     res.end(home);
-  } else if (req.method === "GET" && url.pathname === "/styles.css") {
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/styles.css"
+  ) {
     const styles = fs.readFileSync("public/styles.css", "utf8");
-    res.writeHead(200, { "Content-Type": "text/css" });
+
+    res.writeHead(200, {
+      "Content-Type": "text/css"
+    });
+
     res.end(styles);
-  } else if (req.method === "GET" && url.pathname === "/images/hero.png") {
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/images/hero.png"
+  ) {
     file = fs.readFileSync("public/images/hero.png");
+
     res.writeHead(200, {
-      "Content-Type" : "image/png"
-    })
+      "Content-Type": "image/png"
+    });
+
     res.end(file);
-  } else if (req.method === "GET" && url.pathname === "/images/orgo%202.jpg") {
-    file = fs.readFileSync("public/images/orgo 2.jpg")
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/images/orgo%202.jpg"
+  ) {
+    file = fs.readFileSync("public/images/orgo 2.jpg");
+
     res.writeHead(200, {
-      "Content-Type" : "image/jpeg"
-    })
+      "Content-Type": "image/jpeg"
+    });
+
     res.end(file);
-  } else if (req.method === "GET" && url.pathname === "/images/ChatGPT%20Image%20Sep%2025,%202026,%2009_07_06%20PM%20(1).png") {
-    file = fs.readFileSync("public/images/ChatGPT Image Sep 25, 2026, 09_07_06 PM (1).png");
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/images/ChatGPT%20Image%20Sep%2025,%202026,%2009_07_06%20PM%20(1).png"
+  ) {
+    file = fs.readFileSync(
+      "public/images/ChatGPT Image Sep 25, 2026, 09_07_06 PM (1).png"
+    );
+
     res.writeHead(200, {
-      "Content-Type" : "image/png"
-    })
+      "Content-Type": "image/png"
+    });
+
     res.end(file);
-  } else if (req.method === "GET" && url.pathname === "/images/image%20(2).png") {
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/images/image%20(2).png"
+  ) {
     file = fs.readFileSync("public/images/image (2).png");
+
     res.writeHead(200, {
-      "Content-Type" : "image/png"
-    })
+      "Content-Type": "image/png"
+    });
+
     res.end(file);
-  } else if (req.method === "GET" && url.pathname === "/resources.html") {
-    file = fs.readFileSync("public/resources.html")
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/resources.html"
+  ) {
+    file = fs.readFileSync("public/resources.html");
+
     res.writeHead(200, {
-      "Content-Type" : "text/html"
-    })
+      "Content-Type": "text/html"
+    });
+
     res.end(file);
-  } else if (req.method === "GET" && url.pathname === "/resources.js") {
-    file = fs.readFileSync("public/resources.js")
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/resources.js"
+  ) {
+    file = fs.readFileSync("public/resources.js");
+
     res.writeHead(200, {
-      "Content-Type" : "text/javascript"
-    })
+      "Content-Type": "text/javascript"
+    });
+
     res.end(file);
-  } else if (req.method === "GET" && url.pathname === "/getResources") {
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/getResources"
+  ) {
+    const resources = await getResources();
+
     res.writeHead(200, {
-      "Content-Type" : "application/json"
-    })
-    res.end(JSON.stringify(getResources()));
-  } else if (req.method === "GET" && url.pathname === "/resources.css") {
+      "Content-Type": "application/json"
+    });
+
+    res.end(JSON.stringify(resources));
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/resources.css"
+  ) {
     res.writeHead(200, {
-      "Content-Type" : "text/css"
-    })
-    res.end(fs.readFileSync("public/resources.css"))
-  } else if (req.method === "GET" && url.pathname === "/videos.html") {
+      "Content-Type": "text/css"
+    });
+
+    res.end(fs.readFileSync("public/resources.css"));
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/videos.html"
+  ) {
     res.writeHead(200, {
-      "Content-Type" : "text/html"
-    })
-    res.end(fs.readFileSync("public/videos.html"))
-  } else if (req.method === "GET" && url.pathname === "/videos.css") {
+      "Content-Type": "text/html"
+    });
+
+    res.end(fs.readFileSync("public/videos.html"));
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/videos.css"
+  ) {
     res.writeHead(200, {
-      "Content-Type" : "text/css"
-    })
-    res.end(fs.readFileSync("public/videos.css"))
-  } else if (req.method === "GET" && url.pathname === "/videos.js") {
+      "Content-Type": "text/css"
+    });
+
+    res.end(fs.readFileSync("public/videos.css"));
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/videos.js"
+  ) {
     res.writeHead(200, {
-      "Content-Type" : "text/javascript"
-    })
-    res.end(fs.readFileSync("public/videos.js"))
-  } else if (req.method === "GET" && url.pathname === "/getVideos") {
+      "Content-Type": "text/javascript"
+    });
+
+    res.end(fs.readFileSync("public/videos.js"));
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/getVideos"
+  ) {
+    const videos = await getVideos();
+
     res.writeHead(200, {
-      "Content-Type" : "application/json"
-    })
-    res.end(JSON.stringify(getVideos()));
-  } else if (req.method === "GET" && url.pathname === "/videos/TSO-6-FINAL.mp4") {
+      "Content-Type": "application/json"
+    });
+
+    res.end(JSON.stringify(videos));
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/videos/TSO-6-FINAL.mp4"
+  ) {
     res.writeHead(200, {
-      "Content-Type" : "video/mp4"
-    })
-    res.end(fs.readFileSync("videos/TSO-6-FINAL.mp4"))
-  } else if (req.method === "GET" && url.pathname === "/videos/The%20Nun%20II%20[Hindi]-1080P.mp4") {
+      "Content-Type": "video/mp4"
+    });
+
+    res.end(fs.readFileSync("videos/TSO-6-FINAL.mp4"));
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/videos/The%20Nun%20II%20[Hindi]-1080P.mp4"
+  ) {
     res.writeHead(200, {
-      "Content-Type" : "video/mp4"
-    })
-    res.end(fs.readFileSync("videos/look up (1).mp4"))
-  } else if (req.method === "GET" && url.pathname === "/contact.html") {
-    res.writeHead(200, { "Content-Type" : "text/html" })
+      "Content-Type": "video/mp4"
+    });
+
+    res.end(fs.readFileSync("videos/look up (1).mp4"));
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/contact.html"
+  ) {
+    res.writeHead(200, {
+      "Content-Type": "text/html"
+    });
+
     res.end(fs.readFileSync("public/contact.html"));
-  }  else if (req.method === "GET" && url.pathname === "/contact.css") {
-    res.writeHead(200, { "Content-Type" : "text/css" })
-    res.end(fs.readFileSync("public/contact.css"));
-  }  else if (req.method === "GET" && url.pathname === "/contact.js") {
-    res.writeHead(200, { "Content-Type" : "text/javascript" })
-    res.end(fs.readFileSync("public/contact.js"));
-  } else if (req.method === "GET" && url.pathname === "/videos/Copy%20of%20TSO-3-FINAL.mp4") {
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/contact.css"
+  ) {
     res.writeHead(200, {
-      "Content-Type" : "video/mp4"
-    })
-    res.end(fs.readFileSync("videos/331030_medium.mp4"))
-  } else if (req.method === "POST" && url.pathname === "/queries") {
+      "Content-Type": "text/css"
+    });
+
+    res.end(fs.readFileSync("public/contact.css"));
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/contact.js"
+  ) {
+    res.writeHead(200, {
+      "Content-Type": "text/javascript"
+    });
+
+    res.end(fs.readFileSync("public/contact.js"));
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/videos/Copy%20of%20TSO-3-FINAL.mp4"
+  ) {
+    res.writeHead(200, {
+      "Content-Type": "video/mp4"
+    });
+
+    res.end(fs.readFileSync("videos/331030_medium.mp4"));
+
+  } else if (
+    req.method === "POST" &&
+    url.pathname === "/queries"
+  ) {
     let body = "";
 
     req.on("data", chunk => {
       body += chunk;
     });
 
-    req.on("end", () => {
+    req.on("end", async () => {
       try {
         const data = JSON.parse(body);
 
@@ -134,7 +261,12 @@ const server = http.createServer(async (req, res) => {
           return;
         }
 
-        addQuery(name, email, subject, message);
+        await addQuery(
+          name,
+          email,
+          subject,
+          message
+        );
 
         res.writeHead(201, {
           "Content-Type": "application/json"
@@ -146,6 +278,8 @@ const server = http.createServer(async (req, res) => {
         }));
 
       } catch (error) {
+        console.error(error);
+
         res.writeHead(400, {
           "Content-Type": "application/json"
         });
@@ -156,17 +290,28 @@ const server = http.createServer(async (req, res) => {
         }));
       }
     });
-  } else if (req.method === "GET" && url.pathname === "/404.css") {
-    res.writeHead(200, { "Content-Type" : "text/css" })
-    res.end(fs.readFileSync("public/404.css"))
-  }
-  else {
-    // Fallback for 404 Not Found
-    res.writeHead(404, { "Content-Type": "text/html" });
+
+  } else if (
+    req.method === "GET" &&
+    url.pathname === "/404.css"
+  ) {
+    res.writeHead(200, {
+      "Content-Type": "text/css"
+    });
+
+    res.end(fs.readFileSync("public/404.css"));
+
+  } else {
+    res.writeHead(404, {
+      "Content-Type": "text/html"
+    });
+
     res.end(fs.readFileSync("public/404.html"));
   }
 });
 
-server.listen(3000, () => {
-  console.log("Server running at port 3000");
+const port = process.env.PORT || 3000;
+
+server.listen(port, () => {
+  console.log(`Server running at port ${port}`);
 });

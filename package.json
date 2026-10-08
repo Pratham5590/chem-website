@@ -1,5 +1,5 @@
 {
-  "name": "dsp",
+  "name": "chem-website",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
@@ -7,10 +7,10 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo build",
     "start": "node server.js"
   },
   "dependencies": {
-    "better-sqlite3": "^13.0.3"
+    "mysql2": "^3.24.5"
   }
 }
