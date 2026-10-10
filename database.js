@@ -1,10 +1,11 @@
+import "dotenv/config";
 import mysql from "mysql2/promise";
 
 const db = mysql.createPool({
-  host: "localhost",
-  user: "root",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: "chemistry_website",
+  database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
@@ -38,4 +39,14 @@ export async function addQuery(name, email, subject, message) {
   ]);
 
   return result;
+}
+
+export async function getQueries() {
+  const [queries] = await db.query(`
+    SELECT id, name, email, subject, message, created_at
+    FROM queries
+    ORDER BY created_at DESC
+  `);
+
+  return queries;
 }

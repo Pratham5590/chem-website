@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Enquiries | Devyani Pawar Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/admin.css">
+  <link rel="icon" href="../images/image (2).png">
+  <script src="/admin/dashboard.js" defer></script>
+</head>
+<body>
+  <main class="admin-shell dashboard-shell">
+    <header class="dashboard-topbar">
+      <div class="dashboard-brand">
+        <span class="brand-name">Devyani Pawar</span>
+        <span class="brand-subtitle">Chemistry Educator · Admin</span>
+      </div>
+      <div class="topbar-actions">
+        <a class="text-button" href="/" target="_blank" rel="noopener">View website ↗</a>
+        <button class="text-button" id="logout-button" type="button">Log out</button>
+      </div>
+    </header>
+    <section class="page-heading">
+      <span class="eyebrow">Administration</span>
+      <h1>Enquiries inbox</h1>
+      <p>Messages submitted through the website contact form.</p>
+    </section>
+    <section class="stats-row" aria-label="Enquiry summary">
+      <article class="stat-card">
+        <div class="stat-label">Total enquiries</div>
+        <div class="stat-value" id="total-count">—</div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-label">Latest enquiry</div>
+        <div class="stat-value" id="latest-date" style="font-size:1.2rem">—</div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-label">Visible results</div>
+        <div class="stat-value" id="visible-count">—</div>
+      </article>
+    </section>
+    <section class="inbox-panel" aria-labelledby="inbox-title">
+      <header class="inbox-header">
+        <h2 id="inbox-title">All messages</h2>
+        <div class="inbox-tools">
+          <input class="search-input" id="query-search" type="search" placeholder="Search name, email or message…" aria-label="Search enquiries">
+          <button class="text-button" id="refresh-button" type="button">Refresh ↻</button>
+        </div>
+      </header>
+      <div id="query-list" class="query-list" aria-live="polite">
+        <p class="loading-state">Loading enquiries…</p>
+      </div>
+    </section>
+    <p class="footer-note">Private administration · Keep your login credentials secure.</p>
+  </main>
+</body>
+</html>
