@@ -3,8 +3,10 @@ node_modules/
 chemistryWebsite.db
 *.db
 *.py
-.vscode/node_modules/
+.vscode/
+node_modules/
 .env
 .env.*
 !.env.example
 uploads/
+*.sql
