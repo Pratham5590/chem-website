@@ -57,9 +57,40 @@ async function loadVideos(data) {
   }
 }
 
+async function getFeaturedVideo() {
+  const response = await fetch("/getVideos");
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch videos");
+  }
+
+  const data = await response.json();
+  const featured = data.find(entry => entry.id === 1);
+
+  return featured?.file_path ?? null;
+}
+
+async function setupFeaturedVideo() {
+  const featured = document.querySelector("#featured-video");
+  const videoPath = await getFeaturedVideo();
+
+  if (featured && videoPath) {
+    featured.src = videoPath;
+    featured.load();
+  }
+}
+
 async function getData() {
   const response = await fetch("/getVideos");
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch videos");
+  }
+
   const data = await response.json();
+  lectureList.replaceChildren();
   loadVideos(data);
 }
+
+setupFeaturedVideo();
 getData();

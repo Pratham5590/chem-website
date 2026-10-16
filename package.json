@@ -6,6 +6,9 @@
   "author": "",
   "type": "module",
   "main": "server.js",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "build": "echo build",
     "start": "node server.js"
@@ -14,6 +17,7 @@
     "dotenv": "^18.0.7",
     "express": "^5.3.0",
     "express-session": "^1.19.0",
+    "multer": "^2.4.0",
     "mysql2": "^3.24.5"
   }
 }
