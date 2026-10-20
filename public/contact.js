@@ -39,7 +39,7 @@ form.addEventListener("submit", async (event) => {
     setTimeout(() => {
       confirmation.remove();
     }, 5000);
-
+    form.reset();
   } else {
     const error = document.createElement("p");
 
