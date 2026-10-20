@@ -3,7 +3,23 @@
   <head>
     <meta charset="utf8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="contact.css">\n    <style>
+      #enquiry-form .field-error {
+        border-color: #e27b75 !important;
+        box-shadow: 0 0 0 3px rgba(226, 123, 117, 0.16) !important;
+        outline: none;
+      }
+      #enquiry-form .field-error:focus {
+        border-color: #ff9b94 !important;
+        box-shadow: 0 0 0 3px rgba(226, 123, 117, 0.24) !important;
+      }
+      #form-status { margin: 18px 0 0; padding: 13px 16px; border: 1px solid transparent; border-radius: 6px; font-size: 14px; line-height: 1.5; }
+      #form-status[hidden] { display: none; }
+      #form-status.status-error { color: #ffd5d2; background: rgba(150, 35, 35, 0.16); border-color: rgba(226, 123, 117, 0.55); }
+      #form-status.status-success { color: #d5f2df; background: rgba(35, 120, 70, 0.14); border-color: rgba(120, 200, 150, 0.45); }
+      #enquiry-form button:disabled { opacity: 0.65; cursor: wait; }
+    </style>
+
 		<link rel="icon" href="images/image (2).png">
     <title>Chemistry — Contact</title>
     <script src="contact.js" defer></script>
@@ -136,13 +152,13 @@
 			<section id="enquiry">
 				<p id="enquiry-title"> SEND AN ENQUIRY</p>
 				<div id="enquiry-form-card">
-					<form id="enquiry-form">
+					<form id="enquiry-form" novalidate>
 						<label for="name" class="label">NAME</label>
-						<input id="name" type="text" placeholder="Your name..." required>
+						<input id="name" name="name" type="text" placeholder="Your name..." required>
 						<label for="email-input" class="label">EMAIL</label>
-						<input id="email-input" type="text" placeholder="Your Email..." required>
+						<input id="email-input" name="email" type="email" placeholder="Your Email..." required>
 						<label for="subject" class="label">SUBJECT</label>
-						<input id="subject" type="text" placeholder="One line info about the enquiry...">
+						<input id="subject" name="subject" type="text" placeholder="One line info about the enquiry...">
 						<label for="message" class="label">MESSAGE</label>
 						<textarea
 							id="message"
@@ -151,6 +167,7 @@
 							required
 						></textarea>
 						<button type="submit">SEND MESSAGE &nearr;</button>
+						<p id="form-status" role="alert" aria-live="polite" hidden></p>
 					</form>
 				</div>
 			</section>
