@@ -242,4 +242,4 @@ try {
   console.error("Could not connect to MySQL:", error.message);
 }
 
-app.listen(PORT, () => console.log(`Chemistry website running at http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Chemistry website running at ${PORT}`));
