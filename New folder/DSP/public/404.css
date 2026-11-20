@@ -1,0 +1,879 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+
+:root {
+	--black: #080a0c;
+	--background: #0c0f12;
+	--surface: #11151a;
+	--surface-light: #171c22;
+
+	--white: #f2eee5;
+	--white-soft: #d2cec5;
+	--muted: #858a91;
+
+	--gold: #c5a56a;
+	--gold-light: #d8bc82;
+	--gold-dark: #917342;
+
+	--border: #252b32;
+	--border-light: #303740;
+
+	--serif: 'Playfair Display', serif;
+	--sans: 'DM Sans', sans-serif;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--sans);
+	background: var(--background);
+	color: var(--white);
+
+	overflow-x: hidden;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+
+/* =========================================================
+   PAGE ATMOSPHERE
+========================================================= */
+
+body::before {
+	content: '';
+
+	position: fixed;
+	inset: 0;
+
+	background:
+		radial-gradient(
+			circle at 75% 15%,
+			rgba(197, 165, 106, 0.055),
+			transparent 28%
+		),
+		radial-gradient(
+			circle at 10% 80%,
+			rgba(197, 165, 106, 0.025),
+			transparent 30%
+		);
+
+	pointer-events: none;
+	z-index: -2;
+}
+
+
+/* =========================================================
+   SCIENTIFIC GRID
+========================================================= */
+
+body::after {
+	content: '';
+
+	position: fixed;
+	inset: 0;
+
+	background-image:
+		linear-gradient(
+			rgba(255, 255, 255, 0.018) 1px,
+			transparent 1px
+		),
+		linear-gradient(
+			90deg,
+			rgba(255, 255, 255, 0.018) 1px,
+			transparent 1px
+		);
+
+	background-size: 70px 70px;
+
+	pointer-events: none;
+	z-index: -1;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+#nav-bar {
+	width: 100%;
+
+	padding: 30px 6% 0;
+
+	position: relative;
+	z-index: 20;
+}
+
+#navbar {
+	display: flex;
+	align-items: center;
+
+	width: 100%;
+
+	padding: 23px 0 25px;
+
+	border-bottom: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   WEBSITE NAME
+========================================================= */
+
+#website-name {
+	margin-right: auto;
+
+	font-family: var(--serif);
+
+	font-size: 31px;
+
+	font-weight: 600;
+
+	letter-spacing: 0.5px;
+
+	color: var(--white);
+
+	transition: color 0.25s ease;
+}
+
+#website-name:hover {
+	color: var(--gold);
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+#navbar > a:not(#contact-nav) {
+	position: relative;
+}
+
+#navbar a {
+	font-size: 16px;
+
+	font-weight: 500;
+
+	color: var(--muted);
+
+	transition: color 0.25s ease;
+}
+
+#navbar a:hover {
+	color: var(--white);
+}
+
+/* NAV UNDERLINE */
+
+#navbar a:not(#contact-nav)::after {
+	content: '';
+
+	position: absolute;
+
+	left: 0;
+	bottom: -10px;
+
+	width: 0;
+	height: 1px;
+
+	background: var(--gold);
+
+	transition: width 0.25s ease;
+}
+
+#navbar a:not(#contact-nav):hover::after {
+	width: 100%;
+}
+
+
+/* =========================================================
+   NAVIGATION SPACING
+========================================================= */
+
+#return-home {
+	margin-left: 50px;
+}
+
+#about-navbar,
+#videos,
+#resources,
+#contact-navbar-link {
+	margin-left: 40px;
+}
+
+
+/* =========================================================
+   PROFILE IMAGE
+========================================================= */
+
+#contact-nav {
+	width: 53px;
+	height: 53px;
+
+	margin-left: 44px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: 50%;
+
+	border: 1px solid var(--border-light);
+
+	overflow: hidden;
+
+	transition:
+		border-color 0.3s ease,
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+#contact-nav img {
+	width: 100%;
+	height: 100%;
+
+	object-fit: cover;
+
+	transition: transform 0.4s ease;
+}
+
+#contact-nav:hover {
+	border-color: var(--gold);
+
+	transform: translateY(-3px);
+
+	box-shadow:
+		0 0 0 5px rgba(197, 165, 106, 0.05),
+		0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+#contact-nav:hover img {
+	transform: scale(1.07);
+}
+
+/* =========================================== */
+
+main {
+	position: relative;
+}
+
+#footer {
+  padding: 70px 8% 30px;
+  background: var(--black);
+  border-top: 1px solid var(--border);
+}
+
+#footer-main {
+  text-align: center;
+}
+
+#footer-name {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--white);
+}
+
+#footer-title {
+  margin: 8px 0 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+#footer-links {
+  margin: 45px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+#footer-links a {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: var(--white-soft);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+#footer-links a:hover {
+  color: var(--gold-light);
+}
+
+#footer-bottom {
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--border);
+}
+
+#footer-bottom p {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* =========================================================
+   404 PAGE
+========================================================= */
+
+main {
+	min-height: 620px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#hero {
+	width: min(1100px, calc(100% - 80px));
+
+	margin: 0 auto;
+
+	padding: 100px 0 90px;
+
+	text-align: center;
+}
+
+#errorCode {
+	color: var(--gold);
+
+	font-family: var(--serif);
+
+	font-size: clamp(120px, 17vw, 220px);
+
+	font-weight: 500;
+
+	line-height: 0.9;
+
+	letter-spacing: -8px;
+
+	opacity: 0.95;
+
+	user-select: none;
+}
+
+#errorText {
+	margin-top: 35px;
+
+	color: var(--white);
+
+	font-family: var(--serif);
+
+	font-size: clamp(32px, 4vw, 52px);
+
+	font-weight: 500;
+
+	line-height: 1.15;
+
+	letter-spacing: -1.5px;
+}
+
+#errorDescription {
+	max-width: 600px;
+
+	margin: 24px auto 0;
+
+	color: var(--muted);
+
+	font-size: 15px;
+
+	line-height: 1.8;
+}
+
+#returnButton {
+	margin-top: 38px;
+}
+
+#returnButton a {
+	display: inline-flex;
+
+	align-items: center;
+	justify-content: center;
+
+	min-width: 190px;
+	height: 56px;
+
+	padding: 0 25px;
+
+	color: var(--gold-light);
+
+	background: transparent;
+
+	border: 1px solid var(--gold-dark);
+
+	font-size: 10px;
+	font-weight: 600;
+
+	letter-spacing: 2.5px;
+
+	transition:
+		background-color 0.25s ease,
+		border-color 0.25s ease,
+		color 0.25s ease,
+		transform 0.25s ease;
+}
+
+#returnButton a:hover {
+	color: var(--white);
+
+	background-color: rgba(197, 165, 106, 0.08);
+
+	border-color: var(--gold);
+
+	transform: translateY(-3px);
+}
+
+#returnButton a:active {
+	transform: translateY(0);
+}
+
+#heroSeperator {
+	width: min(1100px, calc(100% - 80px));
+
+	margin: 0 auto;
+
+	border: none;
+
+	border-top: 1px solid var(--border);
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+	#nav-bar {
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+
+	#navbar a {
+		font-size: 15px;
+	}
+
+	#return-home {
+		margin-left: 40px;
+	}
+
+	#about-navbar,
+	#videos,
+	#resources,
+	#contact-navbar-link {
+		margin-left: 30px;
+	}
+
+	#contact-nav {
+		margin-left: 35px;
+	}
+
+	#hero {
+		width: min(1000px, calc(100% - 70px));
+		padding: 90px 0 80px;
+	}
+
+	#errorCode {
+		font-size: clamp(115px, 16vw, 190px);
+	}
+
+	#errorText {
+		font-size: clamp(30px, 4vw, 48px);
+	}
+
+	#heroSeperator {
+		width: min(1000px, calc(100% - 70px));
+	}
+
+	#footer {
+		padding-left: 6%;
+		padding-right: 6%;
+	}
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+	#nav-bar {
+		padding: 20px 4% 0;
+	}
+
+	#navbar {
+		padding: 20px 0 22px;
+	}
+
+	#website-name {
+		font-size: 27px;
+	}
+
+	#navbar a {
+		font-size: 14px;
+	}
+
+	#return-home {
+		margin-left: 25px;
+	}
+
+	#about-navbar,
+	#videos,
+	#resources,
+	#contact-navbar-link {
+		margin-left: 22px;
+	}
+
+	#contact-nav {
+		width: 47px;
+		height: 47px;
+
+		margin-left: 25px;
+	}
+
+	main {
+		min-height: 580px;
+	}
+
+	#hero {
+		width: calc(100% - 60px);
+
+		padding: 80px 0 70px;
+	}
+
+	#errorCode {
+		font-size: clamp(105px, 17vw, 165px);
+
+		letter-spacing: -6px;
+	}
+
+	#errorText {
+		margin-top: 30px;
+
+		font-size: clamp(28px, 5vw, 42px);
+	}
+
+	#errorDescription {
+		max-width: 520px;
+
+		margin-top: 20px;
+
+		font-size: 14px;
+	}
+
+	#returnButton {
+		margin-top: 32px;
+	}
+
+	#heroSeperator {
+		width: calc(100% - 60px);
+	}
+
+	#footer {
+		padding: 60px 5% 25px;
+	}
+
+	#footer-name {
+		font-size: 27px;
+	}
+
+	#footer-links {
+		margin: 38px 0;
+
+		gap: 22px;
+	}
+
+	#footer-links a {
+		font-size: 12px;
+	}
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+	#nav-bar {
+		padding: 15px 5% 0;
+	}
+
+	#navbar {
+		padding: 17px 0 19px;
+
+		flex-wrap: wrap;
+
+		row-gap: 20px;
+	}
+
+	#website-name {
+		width: 100%;
+
+		margin-right: 0;
+
+		font-size: 27px;
+
+		text-align: center;
+	}
+
+	#navbar > a:not(#contact-nav) {
+		font-size: 12px;
+	}
+
+	#return-home {
+		margin-left: 0;
+	}
+
+	#about-navbar,
+	#videos,
+	#resources,
+	#contact-navbar-link {
+		margin-left: 18px;
+	}
+
+	#contact-nav {
+		width: 42px;
+		height: 42px;
+
+		margin-left: auto;
+	}
+
+	main {
+		min-height: auto;
+	}
+
+	#hero {
+		width: calc(100% - 40px);
+
+		padding: 85px 0 70px;
+	}
+
+	#errorCode {
+		font-size: clamp(95px, 28vw, 145px);
+
+		letter-spacing: -5px;
+	}
+
+	#errorText {
+		margin-top: 28px;
+
+		font-size: clamp(27px, 8vw, 38px);
+
+		letter-spacing: -1px;
+	}
+
+	#errorDescription {
+		max-width: 420px;
+
+		margin-top: 18px;
+
+		font-size: 13px;
+
+		line-height: 1.7;
+	}
+
+	#returnButton {
+		margin-top: 30px;
+	}
+
+	#returnButton a {
+		min-width: 180px;
+
+		height: 54px;
+
+		padding: 0 20px;
+
+		font-size: 9px;
+
+		letter-spacing: 2px;
+	}
+
+	#heroSeperator {
+		width: calc(100% - 40px);
+	}
+
+	#footer {
+		padding: 55px 6% 25px;
+	}
+
+	#footer-name {
+		font-size: 25px;
+	}
+
+	#footer-title {
+		font-size: 11px;
+
+		letter-spacing: 1.7px;
+	}
+
+	#footer-links {
+		margin: 35px 0;
+
+		gap: 18px 24px;
+	}
+
+	#footer-links a {
+		font-size: 12px;
+	}
+
+	#footer-bottom {
+		flex-direction: column;
+
+		align-items: center;
+
+		padding-top: 22px;
+
+		text-align: center;
+
+		gap: 8px;
+	}
+
+	#footer-bottom p {
+		font-size: 11px;
+	}
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+	#nav-bar {
+		padding-left: 6%;
+		padding-right: 6%;
+	}
+
+	#navbar {
+		padding-top: 15px;
+		padding-bottom: 17px;
+
+		row-gap: 17px;
+	}
+
+	#website-name {
+		font-size: 24px;
+	}
+
+	#navbar > a:not(#contact-nav) {
+		font-size: 10px;
+	}
+
+	#about-navbar,
+	#videos,
+	#resources,
+	#contact-navbar-link {
+		margin-left: 12px;
+	}
+
+	#contact-nav {
+		width: 37px;
+		height: 37px;
+	}
+
+	#hero {
+		width: calc(100% - 30px);
+
+		padding: 75px 0 60px;
+	}
+
+	#errorCode {
+		font-size: 92px;
+
+		letter-spacing: -4px;
+	}
+
+	#errorText {
+		margin-top: 24px;
+
+		font-size: 26px;
+
+		line-height: 1.2;
+	}
+
+	#errorDescription {
+		margin-top: 16px;
+
+		font-size: 12px;
+
+		line-height: 1.65;
+	}
+
+	#returnButton {
+		margin-top: 27px;
+	}
+
+	#returnButton a {
+		min-width: 170px;
+
+		height: 50px;
+
+		font-size: 8px;
+
+		letter-spacing: 1.8px;
+	}
+
+	#heroSeperator {
+		width: calc(100% - 30px);
+	}
+
+	#footer {
+		padding: 45px 7% 22px;
+	}
+
+	#footer-name {
+		font-size: 22px;
+	}
+
+	#footer-title {
+		margin-top: 6px;
+
+		font-size: 10px;
+	}
+
+	#footer-links {
+		margin: 30px 0;
+
+		gap: 16px 20px;
+	}
+
+	#footer-links a {
+		font-size: 11px;
+	}
+
+	#footer-bottom {
+		padding-top: 18px;
+	}
+
+	#footer-bottom p {
+		font-size: 10px;
+	}
+}

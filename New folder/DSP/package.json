@@ -1,0 +1,28 @@
+{
+  "name": "chem-website",
+  "version": "1.0.0",
+  "description": "Public website for a Chemistry educator",
+  "license": "ISC",
+  "type": "module",
+  "main": "server.js",
+  "engines": {
+    "node": "26.x"
+  },
+  "scripts": {
+    "build": "node --check server.js && node --check database.js && node --check api/index.js",
+    "start": "node server.js",
+    "dev": "node server.js",
+    "migrate:mysql-to-neon": "node scripts/migrate-mysql-to-neon.js"
+  },
+  "dependencies": {
+    "@neon/config": "^1.14.5",
+    "@neon/env": "^2.1.8",
+    "@neondatabase/serverless": "^1.0.2",
+    "dotenv": "^18.0.7",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "mysql2": "^3.24.5",
+    "pg": "^8.16.3"
+  }
+}
