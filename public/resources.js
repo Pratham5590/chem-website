@@ -1,114 +1,113 @@
 const resourceList = document.querySelector("#resource-list");
-const form = document.querySelector("#form");
+const filterForm = document.querySelector("#form");
 const classFilter = document.querySelector("#class-filter");
 const typeFilter = document.querySelector("#type-filter");
 
 let resources = [];
 
-async function getData() {
-  const response = await fetch("/getResources");
-  resources = await response.json();
+function renderResources(items) {
+  if (!resourceList) return;
+  resourceList.replaceChildren();
 
-  loadResources(resources);
-}
-
-function filterResources(classValue, typeValue) {
-  const filteredResources = [];
-
-  for (let i = 0; i < resources.length; i++) {
-    const resource = resources[i];
-
-    const classMatches =
-      classValue === "all" || resource.class === classValue;
-
-    const typeMatches =
-      typeValue === "all" || resource.type === typeValue;
-
-    if (classMatches && typeMatches) {
-      filteredResources.push(resource);
-    }
+  if (!items.length) {
+    const empty = document.createElement("p");
+    empty.className = "empty-state";
+    empty.textContent = "No resources are available for this selection yet.";
+    resourceList.append(empty);
+    return;
   }
 
-  return filteredResources;
-}
-
-function loadResources(data) {
-  resourceList.innerHTML = "";
-
-  for (let resource of data) {
+  for (const resource of items) {
     const article = document.createElement("article");
-    article.classList.add("resource-item");
+    article.className = "resource-item";
 
-    const divOne = document.createElement("div");
-    divOne.classList.add("resource-number");
-    divOne.textContent = resource.id;
+    const number = document.createElement("div");
+    number.className = "resource-number";
+    number.textContent = resource.id ?? "";
+    article.append(number);
 
-    article.append(divOne);
+    const info = document.createElement("div");
+    info.className = "resource-info";
 
-    const divTwo = document.createElement("div");
-    divTwo.classList.add("resource-info");
+    const title = document.createElement("p");
+    title.className = "resource-title";
+    title.textContent = resource.title || "Untitled resource";
+    info.append(title);
 
-    const resourceTitle = document.createElement("p");
-    resourceTitle.classList.add("resource-title");
-    resourceTitle.textContent = resource.title;
+    const studentClass = document.createElement("p");
+    studentClass.className = "resource-class";
+    studentClass.textContent = `CLASS - ${resource.class ?? ""}`;
+    info.append(studentClass);
 
-    divTwo.append(resourceTitle);
+    const chapter = document.createElement("p");
+    chapter.className = "resource-chapter";
+    chapter.textContent = resource.chapter || "";
+    info.append(chapter);
 
-    const resourceStudentClass = document.createElement("p");
-    resourceStudentClass.classList.add("resource-class");
-    resourceStudentClass.textContent = `CLASS - ${resource.class}`;
+    const description = document.createElement("p");
+    description.className = "resource-description";
+    description.textContent = resource.description || "";
+    info.append(description);
 
-    divTwo.append(resourceStudentClass);
+    article.append(info);
 
-    const resourceChapter = document.createElement("p");
-    resourceChapter.classList.add("resource-chapter");
-    resourceChapter.textContent = resource.chapter;
+    const meta = document.createElement("div");
+    meta.className = "resource-meta";
 
-    divTwo.append(resourceChapter);
+    const type = document.createElement("span");
+    type.className = "resource-type";
+    type.textContent = resource.type || "Resource";
+    meta.append(type);
 
-    const resourceDesc = document.createElement("p");
-    resourceDesc.classList.add("resource-description");
-    resourceDesc.textContent = resource.description;
+    if (resource.file_path) {
+      const link = document.createElement("a");
+      link.href = resource.file_path;
+      link.className = "resource-download";
+      link.textContent = "DOWNLOAD ↗";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      meta.append(link);
+    }
 
-    divTwo.append(resourceDesc);
-
-    article.append(divTwo);
-
-    const divThree = document.createElement("div");
-    divThree.classList.add("resource-meta");
-
-    const resourceType = document.createElement("span");
-    resourceType.classList.add("resource-type");
-    resourceType.textContent = resource.type;
-
-    divThree.append(resourceType);
-
-    const resourceDownload = document.createElement("a");
-    resourceDownload.href = resource.file_path;
-    resourceDownload.classList.add("resource-download");
-    resourceDownload.textContent = "DOWNLOAD ↗";
-
-    divThree.append(resourceDownload);
-
-    article.append(divThree);
-
+    article.append(meta);
     resourceList.append(article);
   }
 }
 
-form.addEventListener("submit", (event) => {
+function applyFilters() {
+  const selectedClass = String(classFilter?.value ?? "all");
+  const selectedType = String(typeFilter?.value ?? "all");
+
+  const filtered = resources.filter((resource) => {
+    const classMatches = selectedClass === "all" || String(resource.class) === selectedClass;
+    const typeMatches = selectedType === "all" || String(resource.type) === selectedType;
+    return classMatches && typeMatches;
+  });
+
+  renderResources(filtered);
+}
+
+async function loadResources() {
+  if (!resourceList) return;
+
+  resourceList.textContent = "Loading resources…";
+  try {
+    const response = await fetch("/getResources", { headers: { Accept: "application/json" } });
+    if (!response.ok) throw new Error(`Request failed (${response.status}).`);
+
+    const data = await response.json();
+    if (!Array.isArray(data)) throw new Error("The server returned an invalid resource list.");
+
+    resources = data;
+    applyFilters();
+  } catch (error) {
+    resourceList.textContent = error.message || "Unable to load resources. Please try again later.";
+  }
+}
+
+filterForm?.addEventListener("submit", (event) => {
   event.preventDefault();
-
-  const selectedClass =
-    classFilter.value === "all"
-      ? "all"
-      : Number(classFilter.value);
-  const selectedType = typeFilter.value;
-
-  const filteredResources =
-    filterResources(selectedClass, selectedType);
-
-  loadResources(filteredResources);
+  applyFilters();
 });
 
-getData();
+loadResources();

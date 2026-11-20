@@ -1,119 +1,42 @@
-# Mrs. Devyani Pawar | Chemistry Educator
+# DSP Chemistry Website
 
-A modern, dark-themed educational website for **Mrs. Devyani Pawar**, a Chemistry educator.
+Public educational website built with HTML, CSS, vanilla JavaScript, Node.js,
+Express, and Neon PostgreSQL.
 
-The website is designed to provide students with access to Chemistry lectures, study resources, teacher information, and contact details through a clean and professional interface.
+## Stack
 
-## Features
+- Frontend: existing HTML, CSS, and vanilla JavaScript
+- Backend: Node.js 22 and Express 5
+- Database: Neon PostgreSQL (`@neondatabase/serverless`)
+- Hosting: Vercel
 
-- Dark, modern, and responsive design
-- Chemistry-focused visual identity
-- Teacher introduction and teaching approach
-- Chemistry lecture section
-- Downloadable study resources
-- Gallery and testimonials
-- Contact information
-- Social media links
-- Responsive layout for desktop and mobile
-- Lightweight frontend without unnecessary frameworks
+## Local development
 
-## Pages
+1. Install Node.js 22.
+2. Run `npm install`.
+3. Copy `.env.example` to `.env`.
+4. Set `DATABASE_URL` to your Neon pooled connection string.
+5. Run `npm run dev`.
+6. Open `http://localhost:3000`.
 
-- **Home** - Introduction, teaching approach, learning options, gallery, testimonials, and contact
-- **Videos** - Chemistry lectures and video content
-- **Resources** - Notes, study material, worksheets, and downloadable resources
-- **Contact** - Contact information and social media links
+## Database setup and migration
 
-## Design
+1. Run `info.sql` in the Neon SQL Editor.
+2. Configure the local MySQL and Neon variables in `.env`.
+3. Run `npm run migrate:mysql-to-neon`.
+4. See `MIGRATION-MYSQL-TO-NEON.md` for the full procedure.
 
-The website uses a dark and minimal visual style with warm gold accents.
+## Vercel deployment
 
-### Fonts
+Add `DATABASE_URL` in Vercel Project Settings -> Environment Variables.
+Use Neon's pooled connection string (hostname includes `-pooler`) and redeploy.
 
-- **Playfair Display** - Headings and editorial text
-- **DM Sans** - Body text, navigation, and UI elements
+## Public endpoints
 
-### Color Palette
+- `GET /healthz`
+- `GET /getResources`
+- `GET /getVideos`
+- `POST /queries`
 
-```css
---black: #080a0c;
---background: #0c0f12;
---surface: #11151a;
---surface-light: #171c22;
-
---white: #f2eee5;
---white-soft: #d2cec5;
---muted: #858a91;
-
---gold: #c5a56a;
---gold-light: #d8bc82;
---gold-dark: #917342;
-
---border: #252b32;
---border-light: #303740;
-```
-
-Tech Stack
-HTML5
-CSS3
-JavaScript
-Node.js
-Node.js HTTP server
-
-No frontend framework is currently used.
-
-Project Structure
-project/
-├── public/
-│   ├── home.html
-│   ├── videos.html
-│   ├── resources.html
-│   ├── contact.html
-│   ├── styles.css
-│   ├── images/
-│   └── resources/
-│
-├── server.js
-├── package.json
-└── README.md
-Running Locally
-
-Make sure Node.js is installed.
-
-Start the server:
-
-node server.js
-
-Then open:
-
-http://localhost:3000
-Content
-
-Teacher-provided content will be added to the website as it becomes available, including:
-
-Chemistry lectures
-Notes and study material
-Classroom photographs
-Testimonials
-Awards and achievements
-Social media links
-
-The website does not use fabricated qualifications, testimonials, achievements, or statistics.
-
-Future Improvements
-
-Planned improvements may include:
-
-Mobile navigation menu
-Resource filtering
-Video filtering
-Search functionality
-Contact form
-Gallery lightbox
-Testimonials carousel
-Backend-powered resource management
-Database integration
-Teacher/admin content management
-Author
-
-Website designed and developed for Mrs. Devyani Pawar, Chemistry Educator.
+The admin dashboard and content-management endpoints have been disabled.
+The HTML and CSS files have been preserved without edits.
